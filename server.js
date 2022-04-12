@@ -2,13 +2,18 @@
 
 // Using express: http://expressjs.com/
 var express = require('express');
+var cors = require('cors');
 const axios = require('axios');
 const { request } = require('express');
 var requestIp = require('request-ip');
 const schedule = require('node-schedule');
+const { get } = require('express/lib/request');
 
 // Create the app
 var app = express();
+app.use(cors({
+  origin: '*'
+}));
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true }))
 
@@ -29,14 +34,16 @@ async function listen() {
 }
 
 // Set the route for the root directory
-app.get('/api/search/TBO', search);
-app.get('/api/get_FareRule/TBO', get_FareRule);
-app.get('/api/getfare/TBO', getfare);
-app.get('/api/ssr_no_lcc/TBO', ssr_no_lcc);
-app.get('/api/ssr_lcc/TBO', ssr_lcc);
-app.get('/api/booknow_no_lcc/TBO', booknow_no_lcc);
-app.get('/api/booknow_lcc/TBO', booknow_lcc);
-app.get('/api/getTicket/TBO', getTicket);
+app.post('/api/TBO/search', search);
+app.get('/api/TBO/get_FareRule', get_FareRule);
+app.get('/api/TBO/getfare', getfare);
+app.get('/api/TBO/ssr_no_lcc', ssr_no_lcc);
+app.get('/api/TBO/ssr_lcc', ssr_lcc);
+app.get('/api/TBO/booknow_no_lcc', booknow_no_lcc);
+app.get('/api/TBO/ticket_no_lcc', Ticketing_no_lcc);
+app.get('/api/TBO/booknow_lcc', booknow_lcc);
+app.get('/api/TBO/getTicket', getTicket);
+app.get('/api/TBO/cancel', cancel_booking);
 // This is what happens when any user requests '/'
 const job = schedule.scheduleJob({ hour: 00, minute: 45 }, (async function () {
   try {
@@ -48,15 +55,34 @@ const job = schedule.scheduleJob({ hour: 00, minute: 45 }, (async function () {
   }
 }));
 async function getTicket(req, res) {
+console.log(req.body);
+search_booking_details = req.body;
+getTicket_data = await get_booking_details(search_booking_details);
+res.send(getTicket_data);
 
+}
+async function cancel_booking(req, res) {
+
+
+}
+async function Ticketing_no_lcc(req, res) {
+   booking_info = req.body;
+  var Ticket_details = await Ticket_no_lcc(booking_info);
+  res.send(Ticket_details);
 
 }
 async function booknow_no_lcc(req, res) {
-
+   booking_info = req.body;
+  var booking_details = await Booking_no_lcc(booking_info);
+  res.send(booking_details);
 
 }
 async function booknow_lcc(req, res) {
-
+  console.log("booking_lcc---->\n",req.body);
+  Ticket_details = req.body;
+  var  Ticket_details_info = await Ticket_lcc(Ticket_details);
+  console.log("send-data",Ticket_details_info);
+  res.send(Ticket_details_info);
 
 }
 async function get_FareRule(req,res){
@@ -156,7 +182,7 @@ async function search_result(search_data) {
     // console.log(search_data.EndUserIp);
     console.time('test_time');
     const res = await axios.post(api_url, {
-      "EndUserIp": search_data.EndUserIp,
+      "EndUserIp": "192.168.1.111",
       "TokenId": process.env.TokenId,
       "AdultCount": search_data.AdultCount,
       "ChildCount": search_data.ChildCount,
@@ -165,23 +191,15 @@ async function search_result(search_data) {
       "OneStopFlight": "false",
       "JourneyType": search_data.JourneyType,
       "PreferredAirlines": null,
-      "Segments": [
-        {
-          "Origin": search_data.Origin,
-          "Destination": search_data.Destination,
-          "FlightCabinClass": search_data.FlightCabinClass,
-          "PreferredDepartureTime": search_data.PreferredDepartureTime,
-          "PreferredArrivalTime": search_data.PreferredArrivalTime
-        }
-      ],
+      "Segments": search_data.Segments,
       "Sources": null
     })
     console.timeEnd('test_time')
-
+    console.log(res.data.Response);
     return (res.data.Response);
 
   } catch (error) {
-    console.error("search problem time issue in side search result");
+    console.error("search problem time issue in side search result",error);
     return (null);
     // expected output: ReferenceError: nonExistentFunction is not defined
     // Note - error messages will vary depending on browser
@@ -265,15 +283,89 @@ async function ssr_lcc_req(ssr_lcc_data) {
 }
 
 async function Booking_no_lcc(no_lcc_booking) {
+    console.log(no_lcc_booking);
+    const api_url = 'http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Book';
+    try {
+      const res = await axios.post(api_url, {
+        "ResultIndex": no_lcc_booking.ResultIndex,
+        "Passengers": no_lcc_booking.Passengers,
+        "EndUserIp": "192.168.11.58",
+        "TokenId": process.env.TokenId,
+        "TraceId": no_lcc_booking.TraceId
+      })
+  
+      console.log("pnr details",res.data);
+      return (res.data);
+    }
+    catch (error) {
+      console.error("error while booking");
+      return (null);
+    }
 
 }
 async function Ticket_lcc(Ticket_lcc_data) {
-
+console.log("ticket for lcc --> \n",Ticket_lcc_data);
+const api_url = 'http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Ticket';
+    try {
+      const res = await axios.post(api_url, {
+        "PreferredCurrency": Ticket_lcc_data.PreferredCurrency,
+        "AgentReferenceNo": "wowRooms",
+        "ResultIndex": Ticket_lcc_data.ResultIndex,
+        "Passengers": Ticket_lcc_data.Passengers,
+        "EndUserIp": "192.168.11.58",
+        "TokenId": process.env.TokenId,
+        "TraceId": Ticket_lcc_data.TraceId
+      })
+  
+      console.log("Ticket of lcc details",res.data);
+      return (res.data);
+    }
+    catch (error) {
+      console.error("error while booking");
+      return (null);
+    }
 }
 async function Ticket_no_lcc(Ticket_no_lcc_data) {
+  console.log("ticket in process",Ticket_no_lcc_data);
+  const api_url = 'http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Ticket';
+  try {
+    const res = await axios.post(api_url, {
+        "EndUserIp": "192.168.10.10",
+        "TokenId": process.env.TokenId,
+        "TraceId": Ticket_no_lcc_data.TraceId,
+        "PNR": Ticket_no_lcc_data.PNR,
+        "BookingId": Ticket_no_lcc_data.BookingId
+    })
+
+    console.log("pnr details",res.data);
+    return (res.data);
+  }
+  catch (error) {
+    console.error("error while booking");
+    return (null);
+  }
 
 }
-async function get_booking_details(booking_details) {
+async function get_booking_details(search_booking_details) {
+console.log("we goo data-->",search_booking_details);
+const api_url = 'http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/GetBookingDetails';
+  try {
+    const res = await axios.post(api_url, {
+        "EndUserIp": "192.168.10.10",
+        "TokenId": process.env.TokenId,
+        "PNR": search_booking_details.PNR,
+        "BookingId": search_booking_details.BookingId
+    })
+
+    console.log("ticket details",res.data);
+    return (res.data);
+  }
+  catch (error) {
+    console.error("error while fatching");
+    return (null);
+  }
+}
+async function cancel_booking(booking_details) {
 
 }
 
