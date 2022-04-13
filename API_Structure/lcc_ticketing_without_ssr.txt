@@ -1,0 +1,42 @@
+only for 1A
+{
+	"PreferredCurrency": null,
+	"ResultIndex": "OB104",
+	"AgentReferenceNo": "AAKASH_test3",
+	"Passengers": [{
+		"Title": "Mr",
+		"FirstName": "OIRNEGRPNyy",
+		"LastName": "testone",
+		"PaxType": 1,
+		"DateOfBirth": "1987-12-06T00:00:00",
+		"Gender": 1,
+		"AddressLine1": "123, Test",
+		"AddressLine2": "",
+		"Fare": {
+			"BaseFare": 100.0,
+			"Tax": 447.0,
+			"YQTax": 0.0,
+			"AdditionalTxnFeePub": 0.0,
+			"AdditionalTxnFeeOfrd": 0.0,
+			"OtherCharges": 0.0
+		},
+		"City": "Mumbai",
+		"CountryCode": "IN",
+		"CountryName": "India",      
+                "Nationality": "IN",
+		"ContactNo": "1234567890",
+		"Email": "AAKASH.WOWROOMS69@GMAIL.COM",
+		"IsLeadPax": true,
+		"FFAirlineCode": "6E",
+		"GSTCompanyAddress": "demo",
+		"GSTCompanyContactNumber": "9029995539",
+		"GSTCompanyName": "wowrooms",
+		"GSTNumber": "06BZAHM6385P6Z2",
+		"GSTCompanyEmail": "AAKASH.WOWROOMS69@GMAIL.COM"
+	}],
+	"TraceId": "d4821e9c-110d-4efc-b145-79b254b774b7"
+}
+
+note if you want to add more Passengers like 1A 1C 1I you need to add Passengers details
+in sagment block and Gst details can be empty 
+and In Fare BaseFare and Tax are same as getfare.   
