@@ -43,7 +43,10 @@ app.get('/api/TBO/booknow_no_lcc', booknow_no_lcc);
 app.get('/api/TBO/ticket_no_lcc', Ticketing_no_lcc);
 app.get('/api/TBO/booknow_lcc', booknow_lcc);
 app.get('/api/TBO/getTicket', getTicket);
-app.get('/api/TBO/cancel', cancel_booking);
+app.get('/api/TBO/cancel/Cancellation_Charges', Cancellation_Charges);
+app.get('/api/TBO/cancel/ticketed', SEND_CHANGE_REQUEST);
+app.get('/api/TBO/cancel/hold_bookings', RELEASE_PNR_REQUEST);
+
 // This is what happens when any user requests '/'
 const job = schedule.scheduleJob({ hour: 00, minute: 45 }, (async function () {
   try {
@@ -61,8 +64,19 @@ getTicket_data = await get_booking_details(search_booking_details);
 res.send(getTicket_data);
 
 }
-async function cancel_booking(req, res) {
-
+async function Cancellation_Charges(req, res) {
+  console.log(req.body);
+  var get_details_info_of_cancellation = await cancel_Cancellation_Charges(req.body);
+  res.send(get_details_info_of_cancellation);}
+async function RELEASE_PNR_REQUEST(req, res) {
+  console.log(req.body);
+var get_details_info_of_cancellation = await cancel_hold_bookings(req.body);
+res.send(get_details_info_of_cancellation);
+}
+async function SEND_CHANGE_REQUEST(req, res) {
+console.log(req.body);
+var get_details_info_of_cancellation = await cancel_ticketed(req.body);
+res.send(get_details_info_of_cancellation);
 
 }
 async function Ticketing_no_lcc(req, res) {
@@ -95,9 +109,15 @@ async function getfare(req, res) {
   getfare_data = req.body;
   //console.log();
   var get_FareRule = await get_FareRule_data(getfare_data);
-  var get_FareQuote = await get_FareQuote_data(getfare_data);
-  //console.log("get_FareQuote",get_FareQuote);
+  console.log(get_FareRule);
+  if(get_FareRule.Response.Error.ErrorCode == 0){
+    var get_FareQuote = await get_FareQuote_data(getfare_data);
+     //console.log("get_FareQuote",get_FareQuote);
   res.send(get_FareQuote);
+  }
+  else{
+    res.send(get_FareRule);
+  }
 }
 async function ssr_no_lcc(req,res){
   console.log(req.body);
@@ -107,6 +127,7 @@ async function ssr_no_lcc(req,res){
   res.send(ssr_no_lcc);
 
 }
+// Checking SSR (Special Service Reques) for lcc flight  
 async function ssr_lcc(req,res){
   //console.log("<------ssr_lcc----->");
   ssr_lcc_data = req.body;
@@ -115,6 +136,7 @@ async function ssr_lcc(req,res){
   res.send(ssr_lcc);
 
 }
+//Search Flight from TBO API
 async function search(req, res) {
   // Just send back "Hello World!"
   // Later we'll see how we might send back JSON
@@ -163,7 +185,7 @@ async function Authenticate() {
       "ClientId": process.env.ClientId,
       "UserName": process.env.UserNameId,
       "Password": process.env.Password,
-      "EndUserIp": "0.0.0.0"
+      "EndUserIp": "192.168.1.111"
     })
 
     process.env['TokenId'] = res.data.TokenId;
@@ -175,7 +197,7 @@ async function Authenticate() {
     return (null);
   }
 }
-//Segments
+//Get data from TBO API
 async function search_result(search_data) {
   try {
     const api_url = 'http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Search';
@@ -207,11 +229,12 @@ async function search_result(search_data) {
 
 
 }
+//Get FARE Rule from TBO API
 async function get_FareRule_data(booking_data) {
   const api_url = 'http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/FareRule';
   try {
     const res = await axios.post(api_url, {
-      "EndUserIp": "0.0.0.0",
+      "EndUserIp": "192.168.1.11",
       "TokenId": process.env.TokenId,
       "TraceId": booking_data.TraceId,
       "ResultIndex": booking_data.ResultIndex
@@ -225,11 +248,12 @@ async function get_FareRule_data(booking_data) {
     return (null);
   }
 }
+//Get FARE from TBO API it contain both fare_rule + fareQuote
 async function get_FareQuote_data(booking_data) {
   const api_url = 'http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/FareQuote';
   try {
     const res = await axios.post(api_url, {
-      "EndUserIp": "0.0.0.0",
+      "EndUserIp": "192.168.1.111",
       "TokenId": process.env.TokenId,
       "TraceId": booking_data.TraceId,
       "ResultIndex": booking_data.ResultIndex
@@ -243,11 +267,12 @@ async function get_FareQuote_data(booking_data) {
     return (null);
   }
 }
+//Getting SSR req from TBO API from no_lcc
 async function ssr_no_lcc_req(ssr_req_no_lcc) {
   const api_url = 'http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/SSR';
   try {
     const res = await axios.post(api_url, {
-      "EndUserIp": "0.0.0.0",
+      "EndUserIp": "192.168.1.111",
       "TokenId": process.env.TokenId,
       "TraceId": ssr_req_no_lcc.TraceId,
       "ResultIndex": ssr_req_no_lcc.ResultIndex
@@ -262,12 +287,13 @@ async function ssr_no_lcc_req(ssr_req_no_lcc) {
   }
   
 }
+//Getting SSR req from TBO API from lcc
 async function ssr_lcc_req(ssr_lcc_data) {
   console.log(ssr_lcc_data);
   const api_url = 'http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/SSR';
   try {
     const res = await axios.post(api_url, {
-      "EndUserIp": "0.0.0.0",
+      "EndUserIp": "192.168.1.111",
       "TokenId": process.env.TokenId,
       "TraceId": ssr_lcc_data.TraceId,
       "ResultIndex": ssr_lcc_data.ResultIndex
@@ -281,7 +307,7 @@ async function ssr_lcc_req(ssr_lcc_data) {
     return (null);
   }
 }
-
+//hold ticket for no lcc calling TBO API
 async function Booking_no_lcc(no_lcc_booking) {
     console.log(no_lcc_booking);
     const api_url = 'http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Book';
@@ -289,7 +315,7 @@ async function Booking_no_lcc(no_lcc_booking) {
       const res = await axios.post(api_url, {
         "ResultIndex": no_lcc_booking.ResultIndex,
         "Passengers": no_lcc_booking.Passengers,
-        "EndUserIp": "192.168.11.58",
+        "EndUserIp": "192.168.1.111",
         "TokenId": process.env.TokenId,
         "TraceId": no_lcc_booking.TraceId
       })
@@ -312,7 +338,7 @@ const api_url = 'http://api.tektravels.com/BookingEngineService_Air/AirService.s
         "AgentReferenceNo": "wowRooms",
         "ResultIndex": Ticket_lcc_data.ResultIndex,
         "Passengers": Ticket_lcc_data.Passengers,
-        "EndUserIp": "192.168.11.58",
+        "EndUserIp": "192.168.1.111",
         "TokenId": process.env.TokenId,
         "TraceId": Ticket_lcc_data.TraceId
       })
@@ -330,7 +356,7 @@ async function Ticket_no_lcc(Ticket_no_lcc_data) {
   const api_url = 'http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Ticket';
   try {
     const res = await axios.post(api_url, {
-        "EndUserIp": "192.168.10.10",
+        "EndUserIp": "192.168.1.111",
         "TokenId": process.env.TokenId,
         "TraceId": Ticket_no_lcc_data.TraceId,
         "PNR": Ticket_no_lcc_data.PNR,
@@ -351,7 +377,7 @@ console.log("we goo data-->",search_booking_details);
 const api_url = 'http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/GetBookingDetails';
   try {
     const res = await axios.post(api_url, {
-        "EndUserIp": "192.168.10.10",
+        "EndUserIp": "192.168.1.111",
         "TokenId": process.env.TokenId,
         "PNR": search_booking_details.PNR,
         "BookingId": search_booking_details.BookingId
@@ -365,7 +391,12 @@ const api_url = 'http://api.tektravels.com/BookingEngineService_Air/AirService.s
     return (null);
   }
 }
-async function cancel_booking(booking_details) {
+async function cancel_Cancellation_Charges(booking_details) {
 
 }
+async function cancel_hold_bookings(booking_details) {
 
+}
+async function cancel_ticketed(booking_details) {
+
+}
