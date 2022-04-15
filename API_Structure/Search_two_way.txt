@@ -1,0 +1,22 @@
+{
+    "AdultCount": "1",
+    "ChildCount": "0",
+    "InfantCount": "0",
+    "JourneyType": "2",         /* Specify journey type 1 - OneWay, 2 - Return*/
+    "Segments": [
+    {
+    "Origin": "DEL",
+    "Destination": "BOM",
+            "FlightCabinClass": "1",
+    "PreferredDepartureTime": "2022-04-16T00: 00: 00",
+    "PreferredArrivalTime": "2022-04-16T00: 00: 00"
+    },
+    {                                                                |   
+      "Origin": "BOM",                                               | 
+      "Destination": "DEL",                                          | Return part search
+      "FlightCabinClass": "1",                                       | 
+      "PreferredDepartureTime": "2020-11-08T00: 00: 00",  ---------->| Return Date and timing 00:00:00 for all flight
+      "PreferredArrivalTime": "2020-11-08T00: 00: 00"                |
+    }
+            ]
+    }

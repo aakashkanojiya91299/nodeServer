@@ -1,0 +1,6 @@
+it include both FARE RULE and FARE QUOTE
+
+{
+"TraceId": "d4821e9c-110d-4efc-b145-79b254b774b7",
+"ResultIndex": "OB104"
+}
