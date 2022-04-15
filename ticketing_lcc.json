@@ -1,0 +1,316 @@
+{
+    "Response": {
+        "B2B2BStatus": false,
+        "Error": {
+            "ErrorCode": 0,
+            "ErrorMessage": ""
+        },
+        "ResponseStatus": 1,
+        "TraceId": "1f9d5d59-540e-4f15-bbda-beb8746033de",
+        "Response": {
+            "PNR": "PFKZWP",
+            "BookingId": 1732082,
+            "SSRDenied": false,
+            "SSRMessage": null,
+            "Status": 1,
+            "IsPriceChanged": false,
+            "IsTimeChanged": false,
+            "FlightItinerary": {
+                "CommentDetails": null,
+                "IsAutoReissuanceAllowed": true,
+                "IssuancePcc": "OTI011",
+                "JourneyType": 1,
+                "TripIndicator": 1,
+                "BookingAllowedForRoamer": true,
+                "BookingId": 1732082,
+                "IsCouponAppilcable": true,
+                "IsManual": false,
+                "PNR": "PFKZWP",
+                "AgentReferenceNo": "AAKASH",
+                "IsDomestic": true,
+                "ResultFareType": "RegularFare",
+                "Source": 6,
+                "Origin": "BOM",
+                "Destination": "DEL",
+                "AirlineCode": "6E",
+                "LastTicketDate": "2022-04-11T13:53:53",
+                "ValidatingAirlineCode": "6E",
+                "AirlineRemark": "6E FARE test",
+                "AirlineTollFreeNo": "1800-0001-5456-51515",
+                "IsLCC": true,
+                "NonRefundable": false,
+                "FareType": "PUB",
+                "CreditNoteNo": null,
+                "Fare": {
+                    "Currency": "INR",
+                    "BaseFare": 100,
+                    "Tax": 488,
+                    "TaxBreakup": [
+                        {
+                            "key": "K3",
+                            "value": 10.00
+                        },
+                        {
+                            "key": "UDF",
+                            "value": 142.00
+                        },
+                        {
+                            "key": "YR",
+                            "value": 50.00
+                        },
+                        {
+                            "key": "TotalTax",
+                            "value": 488.00
+                        },
+                        {
+                            "key": "OtherTaxes",
+                            "value": 236.00
+                        }
+                    ],
+                    "YQTax": 0,
+                    "AdditionalTxnFeeOfrd": 0,
+                    "AdditionalTxnFeePub": 8,
+                    "PGCharge": 0,
+                    "OtherCharges": 0.00,
+                    "ChargeBU": [
+                        {
+                            "key": "TBOMARKUP",
+                            "value": 0
+                        },
+                        {
+                            "key": "GLOBALPROCUREMENTCHARGE",
+                            "value": 0
+                        },
+                        {
+                            "key": "OTHERCHARGE",
+                            "value": 0.00
+                        },
+                        {
+                            "key": "CONVENIENCECHARGE",
+                            "value": 0
+                        }
+                    ],
+                    "Discount": 0.00,
+                    "PublishedFare": 596,
+                    "CommissionEarned": 0,
+                    "PLBEarned": 0,
+                    "IncentiveEarned": 0,
+                    "OfferedFare": 588.00,
+                    "TdsOnCommission": 0,
+                    "TdsOnPLB": 0,
+                    "TdsOnIncentive": 0,
+                    "ServiceFee": 0,
+                    "TotalBaggageCharges": 0,
+                    "TotalMealCharges": 0,
+                    "TotalSeatCharges": 0,
+                    "TotalSpecialServiceCharges": 0
+                },
+                "CreditNoteCreatedOn": null,
+                "Passenger": [
+                    {
+                        "DocumentDetails": null,
+                        "PaxId": 2870799,
+                        "Title": "Mr",
+                        "FirstName": "OIRNEGRPN",
+                        "LastName": "tbo",
+                        "PaxType": 1,
+                        "DateOfBirth": "1987-12-06T00:00:00",
+                        "Gender": 1,
+                        "IsPANRequired": false,
+                        "IsPassportRequired": false,
+                        "PAN": "",
+                        "PassportNo": "",
+                        "AddressLine1": "123, Test",
+                        "Fare": {
+                            "Currency": "INR",
+                            "BaseFare": 100,
+                            "Tax": 488,
+                            "TaxBreakup": [
+                                {
+                                    "key": "K3",
+                                    "value": 10.00
+                                },
+                                {
+                                    "key": "UDF",
+                                    "value": 142.00
+                                },
+                                {
+                                    "key": "YR",
+                                    "value": 50.00
+                                },
+                                {
+                                    "key": "TotalTax",
+                                    "value": 488.00
+                                },
+                                {
+                                    "key": "OtherTaxes",
+                                    "value": 236.00
+                                }
+                            ],
+                            "YQTax": 0,
+                            "AdditionalTxnFeeOfrd": 0,
+                            "AdditionalTxnFeePub": 8,
+                            "PGCharge": 0,
+                            "OtherCharges": 0.00,
+                            "ChargeBU": [
+                                {
+                                    "key": "TBOMARKUP",
+                                    "value": 0
+                                },
+                                {
+                                    "key": "GLOBALPROCUREMENTCHARGE",
+                                    "value": 0
+                                },
+                                {
+                                    "key": "OTHERCHARGE",
+                                    "value": 0.00
+                                },
+                                {
+                                    "key": "CONVENIENCECHARGE",
+                                    "value": 0
+                                }
+                            ],
+                            "Discount": 0.00,
+                            "PublishedFare": 596,
+                            "CommissionEarned": 0,
+                            "PLBEarned": 0,
+                            "IncentiveEarned": 0,
+                            "OfferedFare": 588.00,
+                            "TdsOnCommission": 0,
+                            "TdsOnPLB": 0,
+                            "TdsOnIncentive": 0,
+                            "ServiceFee": 0,
+                            "TotalBaggageCharges": 0,
+                            "TotalMealCharges": 0,
+                            "TotalSeatCharges": 0,
+                            "TotalSpecialServiceCharges": 0
+                        },
+                        "City": "Mumbai",
+                        "CountryCode": "IN",
+                        "CountryName": "India",
+                        "Nationality": "IN",
+                        "ContactNo": "1234567890",
+                        "Email": "AAKASH.WOWROOMS69@GMAIL.COM",
+                        "IsLeadPax": true,
+                        "FFAirlineCode": "6E",
+                        "FFNumber": "168",
+                        "Ssr": [],
+                        "Ticket": {
+                            "TicketId": 2011430,
+                            "TicketNumber": "PFKZWP",
+                            "IssueDate": "2022-04-11T13:23:55",
+                            "ValidatingAirline": "708",
+                            "Remarks": "",
+                            "ServiceFeeDisplayType": "ShowInTax",
+                            "Status": "OK",
+                            "ConjunctionNumber": "     ",
+                            "TicketType": "N"
+                        },
+                        "GSTCompanyAddress": "demo",
+                        "GSTCompanyContactNumber": "9029995539",
+                        "GSTCompanyEmail": "AAKASH.WOWROOMS69@GMAIL.COM",
+                        "GSTCompanyName": "wowrooms",
+                        "GSTNumber": "06BZAHM6385P6Z2",
+                        "SegmentAdditionalInfo": [
+                            {
+                                "FareBasis": "PFLX",
+                                "NVA": "",
+                                "NVB": "",
+                                "Baggage": "15KG",
+                                "Meal": "0 Platter",
+                                "Seat": "",
+                                "SpecialService": ""
+                            }
+                        ]
+                    }
+                ],
+                "CancellationCharges": null,
+                "Segments": [
+                    {
+                        "Baggage": "15KG",
+                        "CabinBaggage": " 7 KG",
+                        "CabinClass": 2,
+                        "TripIndicator": 1,
+                        "SegmentIndicator": 1,
+                        "Airline": {
+                            "AirlineCode": "6E",
+                            "AirlineName": "IndiGo",
+                            "FlightNumber": "168",
+                            "FareClass": "P",
+                            "OperatingCarrier": ""
+                        },
+                        "AirlinePNR": "",
+                        "Origin": {
+                            "Airport": {
+                                "AirportCode": "BOM",
+                                "AirportName": "Mumbai",
+                                "Terminal": "1",
+                                "CityCode": "BOM",
+                                "CityName": "Mumbai",
+                                "CountryCode": "IN",
+                                "CountryName": "India"
+                            },
+                            "DepTime": "2022-05-12T11:35:00"
+                        },
+                        "Destination": {
+                            "Airport": {
+                                "AirportCode": "DEL",
+                                "AirportName": "Indira Gandhi Airport",
+                                "Terminal": "1",
+                                "CityCode": "DEL",
+                                "CityName": "Delhi",
+                                "CountryCode": "IN",
+                                "CountryName": "India"
+                            },
+                            "ArrTime": "2022-05-12T13:55:00"
+                        },
+                        "Duration": 140,
+                        "GroundTime": 0,
+                        "Mile": 0,
+                        "StopOver": false,
+                        "FlightInfoIndex": "",
+                        "StopPoint": "",
+                        "StopPointArrivalTime": "0001-01-01T00:00:00",
+                        "StopPointDepartureTime": "0001-01-01T00:00:00",
+                        "Craft": "320",
+                        "Remark": null,
+                        "IsETicketEligible": true,
+                        "FlightStatus": "Confirmed",
+                        "Status": "HK"
+                    }
+                ],
+                "FareRules": [
+                    {
+                        "Origin": "BOM",
+                        "Destination": "DEL",
+                        "Airline": "6E",
+                        "FareBasisCode": "PFLX",
+                        "FareRuleDetail": "The FareBasisCode is: PFLX<br /><table border=\"1\"><tbody><tr><td rowspan=\"2\"><b>Change/Cancel/Meal/Seat/Baggage</b></td><td></td><td colspan=\"3\" style=\"text-align:center\"><b>Fare Type</b></td></tr><tr><td></td><td width=\"150px;\">Lite Fare</td><td width=\"150px;\">Regular Fare</td><td width=\"150px;\">Flexi Fare</td></tr><tr><td rowspan=\"3\">Baggage</td><td>Domestic(Check-in baggage)</td><td>0 Kg</td><td colspan=\"2\" style=\"text-align:center\">15 Kg</td></tr><tr><td>Domestic(Hand baggage)</td><td colspan=\"3\" style=\"text-align:center\">1 Bag Upto 7 Kg</td></tr><tr><td>International</td><td colspan=\"3\" style=\"text-align:center\"><a href=\"https://www.goindigo.in/travel-information/en/baggage-allowance.html\" target=\"_blank\"> Click Here</a></td></tr><tr><td>Meal/Seat</td><td>Domestic/International</td><td colspan=\"2\" style=\"text-align:center\">Chargeable</td><td width=\"250px;\"> <ul><li><b>Free meal</b> -All meal combinations are free.</li><li><b>Free seat</b> - All standard seats are free.</li><li><b>50% discount</b> on Extra leg room seats (XL Rows).</li></ul></td></tr><tr><td rowspan=\"6\" width=\"200px;\">Change fee <br><b>(Fare Difference is also applicable)</b></td><td><b>No. of Days Left For Departure</b></td><td colspan=\"3\" style=\"text-align:center\"><b>Domestic</b></td></tr><tr><td>0-3 (DAYS)</td><td colspan=\"3\" style=\"text-align:center\">INR 3000</td></tr><tr><td>4 DAYS AND ABOVE</td><td colspan=\"2\" style=\"text-align:center\">INR 2500</td><td width=\"150px;\"><b>Nil Fee</b> is applicable for any no. of changes.</td></tr><tr><td colspan=\"4\" style=\"text-align:center\"><b>International</b></td></tr><tr><td>0-3 (DAYS)</td><td colspan=\"3\" style=\"text-align:center\">UPTO INR 5000 </td></tr><tr><td>4 DAYS AND ABOVE</td><td colspan=\"2\" style=\"text-align:center\">UPTO INR 4500</td><td width=\"150px;\"><b>Nil Fee</b> is applicable for any no. of changes.</td></tr><tr><td rowspan=\"6\" width=\"200px;\">Cancellation Fee<br><b>or Airfare charges (Whichever is lower)</b></td><td colspan=\"4\" style=\"text-align:center\"><b>Domestic</b></td></tr><tr><td>0-3 (DAYS)</td><td colspan=\"3\" style=\"text-align:center\">INR 3500</td></tr><tr><td>4 DAYS AND ABOVE</td><td colspan=\"3\" style=\"text-align:center\">INR 3000</td></tr><tr><td colspan=\"4\" style=\"text-align:center\"><b>International</b></td></tr><tr><td>0-3 (DAYS)</td><td colspan=\"3\" style=\"text-align:center\">UPTO INR 6500</td></tr><tr><td>4 DAYS AND ABOVE</td><td colspan=\"3\" style=\"text-align:center\">UPTO INR 6000</td></tr></tbody></table><br />Subject to change without prior notice.\r\n<b>Note</b> : We should receive the request at least four hours prior to Airline Fare Rules Policy.<br/> <br/>",
+                        "FareRestriction": null
+                    }
+                ],
+                "PenaltyCharges": {},
+                "Status": 5,
+                "Invoice": [
+                    {
+                        "CreditNoteGSTIN": null,
+                        "GSTIN": null,
+                        "InvoiceCreatedOn": "2022-04-11T13:23:55",
+                        "InvoiceId": 754,
+                        "InvoiceNo": "IW/2223/754",
+                        "InvoiceAmount": 588.00,
+                        "Remarks": "",
+                        "InvoiceStatus": 3
+                    }
+                ],
+                "InvoiceAmount": 588.00,
+                "InvoiceNo": "IW/2223/754",
+                "InvoiceStatus": 3,
+                "InvoiceCreatedOn": "2022-04-11T13:23:55",
+                "Remarks": "",
+                "IsWebCheckInAllowed": false
+            },
+            "TicketStatus": 1
+        }
+    }
+}

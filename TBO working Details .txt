@@ -1,0 +1,50 @@
+non_lcc type of flight
+|
+|---Authenticate ==> Search ==>  FareRule
+                                    ||
+                                FareQuote
+                                    || 
+                                SSR(Optional) ==> Book ==> Ticket ==> Get Booking Detail
+ApiIntegrationNew 
+    |
+    |
+    |------/api/TBO/search
+    |------/api/TBO/get_FareRule(optional)
+    |------/api/TBO/getfare --------> it will check both FareRule as well as FareQuote
+    |------/api/TBO/ssr_no_lcc 
+    |------/api/TBO/ssr_lcc
+    |------------------------------
+    |------/api/TBO/booknow_no_lcc 
+    |------/api/TBO/ticket_no_lcc  
+    |-----/api/TBO/GetBookingDetails
+    |
+    |----------Working reaming---------------------
+    |
+    |-----/api/TBO/cancel/Cancellation_Charges
+    |----/api/TBO/cancel/ticketed
+    |----/api/TBO/cancel/hold_bookings
+    |
+    
+-----------------------------------------------------------------------------------------
+lcc type of flight
+|
+|--- Search-->FareRule-->FareQuote-->SSR(optional)-->Ticket-->GetBookingDetails.
+
+ApiIntegrationNew 
+    |
+    |
+    ------/api/TBO/search
+    |------/api/TBO/get_FareRule(optional)
+    |------/api/TBO/getfare --------> it will check both FareRule as well as FareQuote 
+    |------/api/TBO/ssr_lcc
+    |------/api/TBO/booknow_lcc 
+    |------/api/TBO/GetBookingDetails|
+    |
+    |--------------Working reaming---------------------
+    |
+    |
+    |-----/api/TBO/cancel/Cancellation_Charges
+    |----/api/TBO/cancel/ticketed
+    |----/api/TBO/cancel/hold_bookings
+    |
+    |

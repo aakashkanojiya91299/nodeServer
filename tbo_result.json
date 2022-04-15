@@ -1,0 +1,2079 @@
+{
+    "Response": {
+        "ResponseStatus": 1,
+        "Error": {
+            "ErrorCode": 0,
+            "ErrorMessage": ""
+        },
+        "TraceId": "fed44859-25e0-4da2-86e3-1f910151689e",
+        "Origin": "DEL",
+        "Destination": "BOM",
+        "Results": [
+            [
+                {
+                    "IsHoldAllowedWithSSR": false,
+                    "ResultIndex": "OB3",
+                    "Source": 81,
+                    "IsLCC": true,
+                    "IsRefundable": true,
+                    "IsPanRequiredAtBook": false,
+                    "IsPanRequiredAtTicket": false,
+                    "IsPassportRequiredAtBook": false,
+                    "IsPassportRequiredAtTicket": false,
+                    "GSTAllowed": true,
+                    "IsCouponAppilcable": true,
+                    "IsGSTMandatory": false,
+                    "AirlineRemark": "6EM.",
+                    "ResultFareType": "RegularFare",
+                    "Fare": {
+                        "Currency": "INR",
+                        "BaseFare": 100,
+                        "Tax": 499,
+                        "TaxBreakup": [
+                            {
+                                "key": "K3",
+                                "value": 0
+                            },
+                            {
+                                "key": "YQTax",
+                                "value": 0
+                            },
+                            {
+                                "key": "YR",
+                                "value": 0
+                            },
+                            {
+                                "key": "PSF",
+                                "value": 0
+                            },
+                            {
+                                "key": "UDF",
+                                "value": 0
+                            },
+                            {
+                                "key": "INTax",
+                                "value": 0
+                            },
+                            {
+                                "key": "TransactionFee",
+                                "value": 0
+                            },
+                            {
+                                "key": "OtherTaxes",
+                                "value": 0
+                            }
+                        ],
+                        "YQTax": 0,
+                        "AdditionalTxnFeeOfrd": 0,
+                        "AdditionalTxnFeePub": 0,
+                        "PGCharge": 0,
+                        "OtherCharges": 0.00,
+                        "ChargeBU": [
+                            {
+                                "key": "TBOMARKUP",
+                                "value": 0
+                            },
+                            {
+                                "key": "GLOBALPROCUREMENTCHARGE",
+                                "value": 0
+                            },
+                            {
+                                "key": "CONVENIENCECHARGE",
+                                "value": 0
+                            },
+                            {
+                                "key": "OTHERCHARGE",
+                                "value": 0.00
+                            }
+                        ],
+                        "Discount": 0,
+                        "PublishedFare": 599,
+                        "CommissionEarned": 0,
+                        "PLBEarned": 0,
+                        "IncentiveEarned": 0,
+                        "OfferedFare": 599.00,
+                        "TdsOnCommission": 0,
+                        "TdsOnPLB": 0,
+                        "TdsOnIncentive": 0,
+                        "ServiceFee": 0,
+                        "TotalBaggageCharges": 0,
+                        "TotalMealCharges": 0,
+                        "TotalSeatCharges": 0,
+                        "TotalSpecialServiceCharges": 0
+                    },
+                    "FareBreakdown": [
+                        {
+                            "Currency": "INR",
+                            "PassengerType": 1,
+                            "PassengerCount": 1,
+                            "BaseFare": 100,
+                            "Tax": 499,
+                            "TaxBreakUp": [
+                                {
+                                    "key": "YQTax",
+                                    "value": 0
+                                },
+                                {
+                                    "key": "YR",
+                                    "value": 0
+                                }
+                            ],
+                            "YQTax": 0,
+                            "AdditionalTxnFeeOfrd": 0,
+                            "AdditionalTxnFeePub": 0,
+                            "PGCharge": 0,
+                            "SupplierReissueCharges": 0
+                        }
+                    ],
+                    "Segments": [
+                        [
+                            {
+                                "Baggage": "15 KG",
+                                "CabinBaggage": "7 KG",
+                                "CabinClass": 2,
+                                "TripIndicator": 1,
+                                "SegmentIndicator": 1,
+                                "Airline": {
+                                    "AirlineCode": "6E",
+                                    "AirlineName": "Indigo",
+                                    "FlightNumber": "2138",
+                                    "FareClass": "P",
+                                    "OperatingCarrier": ""
+                                },
+                                "NoOfSeatAvailable": 18,
+                                "Origin": {
+                                    "Airport": {
+                                        "AirportCode": "DEL",
+                                        "AirportName": "Indira Gandhi Airport",
+                                        "Terminal": "2",
+                                        "CityCode": "DEL",
+                                        "CityName": "Delhi",
+                                        "CountryCode": "IN",
+                                        "CountryName": "India"
+                                    },
+                                    "DepTime": "2022-11-12T12:01:00"
+                                },
+                                "Destination": {
+                                    "Airport": {
+                                        "AirportCode": "BOM",
+                                        "AirportName": "Mumbai",
+                                        "Terminal": "1",
+                                        "CityCode": "BOM",
+                                        "CityName": "Mumbai",
+                                        "CountryCode": "IN",
+                                        "CountryName": "India"
+                                    },
+                                    "ArrTime": "2022-11-12T14:16:00"
+                                },
+                                "Duration": 135,
+                                "GroundTime": 0,
+                                "Mile": 0,
+                                "StopOver": false,
+                                "FlightInfoIndex": "",
+                                "StopPoint": "",
+                                "StopPointArrivalTime": null,
+                                "StopPointDepartureTime": null,
+                                "Craft": "320",
+                                "Remark": null,
+                                "IsETicketEligible": true,
+                                "FlightStatus": "Confirmed",
+                                "Status": ""
+                            }
+                        ]
+                    ],
+                    "LastTicketDate": null,
+                    "TicketAdvisory": null,
+                    "FareRules": [
+                        {
+                            "Origin": "DEL",
+                            "Destination": "BOM",
+                            "Airline": "6E",
+                            "FareBasisCode": "PFLX",
+                            "FareRuleDetail": "",
+                            "FareRestriction": "",
+                            "FareFamilyCode": "",
+                            "FareRuleIndex": ""
+                        }
+                    ],
+                    "AirlineCode": "6E",
+                    "ValidatingAirline": "6E"
+                },
+                {
+                    "IsHoldAllowedWithSSR": false,
+                    "ResultIndex": "OB4",
+                    "Source": 82,
+                    "IsLCC": true,
+                    "IsRefundable": true,
+                    "IsPanRequiredAtBook": false,
+                    "IsPanRequiredAtTicket": false,
+                    "IsPassportRequiredAtBook": false,
+                    "IsPassportRequiredAtTicket": false,
+                    "GSTAllowed": true,
+                    "IsCouponAppilcable": true,
+                    "IsGSTMandatory": false,
+                    "AirlineRemark": " 6E1.",
+                    "ResultFareType": "RegularFare",
+                    "Fare": {
+                        "Currency": "INR",
+                        "BaseFare": 100,
+                        "Tax": 499,
+                        "TaxBreakup": [
+                            {
+                                "key": "K3",
+                                "value": 0
+                            },
+                            {
+                                "key": "YQTax",
+                                "value": 0
+                            },
+                            {
+                                "key": "YR",
+                                "value": 0
+                            },
+                            {
+                                "key": "PSF",
+                                "value": 0
+                            },
+                            {
+                                "key": "UDF",
+                                "value": 0
+                            },
+                            {
+                                "key": "INTax",
+                                "value": 0
+                            },
+                            {
+                                "key": "TransactionFee",
+                                "value": 0
+                            },
+                            {
+                                "key": "OtherTaxes",
+                                "value": 0
+                            }
+                        ],
+                        "YQTax": 0,
+                        "AdditionalTxnFeeOfrd": 0,
+                        "AdditionalTxnFeePub": 0,
+                        "PGCharge": 0,
+                        "OtherCharges": 0.00,
+                        "ChargeBU": [
+                            {
+                                "key": "TBOMARKUP",
+                                "value": 0
+                            },
+                            {
+                                "key": "GLOBALPROCUREMENTCHARGE",
+                                "value": 0
+                            },
+                            {
+                                "key": "CONVENIENCECHARGE",
+                                "value": 0
+                            },
+                            {
+                                "key": "OTHERCHARGE",
+                                "value": 0.00
+                            }
+                        ],
+                        "Discount": 0,
+                        "PublishedFare": 599,
+                        "CommissionEarned": 0,
+                        "PLBEarned": 0,
+                        "IncentiveEarned": 0,
+                        "OfferedFare": 599.00,
+                        "TdsOnCommission": 0,
+                        "TdsOnPLB": 0,
+                        "TdsOnIncentive": 0,
+                        "ServiceFee": 0,
+                        "TotalBaggageCharges": 0,
+                        "TotalMealCharges": 0,
+                        "TotalSeatCharges": 0,
+                        "TotalSpecialServiceCharges": 0
+                    },
+                    "FareBreakdown": [
+                        {
+                            "Currency": "INR",
+                            "PassengerType": 1,
+                            "PassengerCount": 1,
+                            "BaseFare": 100,
+                            "Tax": 499,
+                            "TaxBreakUp": [
+                                {
+                                    "key": "YQTax",
+                                    "value": 0
+                                },
+                                {
+                                    "key": "YR",
+                                    "value": 0
+                                }
+                            ],
+                            "YQTax": 0,
+                            "AdditionalTxnFeeOfrd": 0,
+                            "AdditionalTxnFeePub": 0,
+                            "PGCharge": 0,
+                            "SupplierReissueCharges": 0
+                        }
+                    ],
+                    "Segments": [
+                        [
+                            {
+                                "Baggage": "15 KG",
+                                "CabinBaggage": "7 KG",
+                                "CabinClass": 2,
+                                "TripIndicator": 1,
+                                "SegmentIndicator": 1,
+                                "Airline": {
+                                    "AirlineCode": "6E",
+                                    "AirlineName": "Indigo",
+                                    "FlightNumber": "2138",
+                                    "FareClass": "P",
+                                    "OperatingCarrier": ""
+                                },
+                                "NoOfSeatAvailable": 18,
+                                "Origin": {
+                                    "Airport": {
+                                        "AirportCode": "DEL",
+                                        "AirportName": "Indira Gandhi Airport",
+                                        "Terminal": "2",
+                                        "CityCode": "DEL",
+                                        "CityName": "Delhi",
+                                        "CountryCode": "IN",
+                                        "CountryName": "India"
+                                    },
+                                    "DepTime": "2022-11-12T12:01:00"
+                                },
+                                "Destination": {
+                                    "Airport": {
+                                        "AirportCode": "BOM",
+                                        "AirportName": "Mumbai",
+                                        "Terminal": "1",
+                                        "CityCode": "BOM",
+                                        "CityName": "Mumbai",
+                                        "CountryCode": "IN",
+                                        "CountryName": "India"
+                                    },
+                                    "ArrTime": "2022-11-12T14:16:00"
+                                },
+                                "Duration": 135,
+                                "GroundTime": 0,
+                                "Mile": 0,
+                                "StopOver": false,
+                                "FlightInfoIndex": "",
+                                "StopPoint": "",
+                                "StopPointArrivalTime": null,
+                                "StopPointDepartureTime": null,
+                                "Craft": "320",
+                                "Remark": null,
+                                "IsETicketEligible": true,
+                                "FlightStatus": "Confirmed",
+                                "Status": ""
+                            }
+                        ]
+                    ],
+                    "LastTicketDate": null,
+                    "TicketAdvisory": null,
+                    "FareRules": [
+                        {
+                            "Origin": "DEL",
+                            "Destination": "BOM",
+                            "Airline": "6E",
+                            "FareBasisCode": "PFLX",
+                            "FareRuleDetail": "",
+                            "FareRestriction": "",
+                            "FareFamilyCode": "",
+                            "FareRuleIndex": ""
+                        }
+                    ],
+                    "AirlineCode": "6E",
+                    "ValidatingAirline": "6E"
+                },
+                {
+                    "IsHoldAllowedWithSSR": false,
+                    "ResultIndex": "OB5",
+                    "Source": 84,
+                    "IsLCC": true,
+                    "IsRefundable": true,
+                    "IsPanRequiredAtBook": false,
+                    "IsPanRequiredAtTicket": false,
+                    "IsPassportRequiredAtBook": false,
+                    "IsPassportRequiredAtTicket": false,
+                    "GSTAllowed": true,
+                    "IsCouponAppilcable": true,
+                    "IsGSTMandatory": false,
+                    "AirlineRemark": "6E3.",
+                    "ResultFareType": "RegularFare",
+                    "Fare": {
+                        "Currency": "INR",
+                        "BaseFare": 100,
+                        "Tax": 499,
+                        "TaxBreakup": [
+                            {
+                                "key": "K3",
+                                "value": 0
+                            },
+                            {
+                                "key": "YQTax",
+                                "value": 0
+                            },
+                            {
+                                "key": "YR",
+                                "value": 0
+                            },
+                            {
+                                "key": "PSF",
+                                "value": 0
+                            },
+                            {
+                                "key": "UDF",
+                                "value": 0
+                            },
+                            {
+                                "key": "INTax",
+                                "value": 0
+                            },
+                            {
+                                "key": "TransactionFee",
+                                "value": 0
+                            },
+                            {
+                                "key": "OtherTaxes",
+                                "value": 0
+                            }
+                        ],
+                        "YQTax": 0,
+                        "AdditionalTxnFeeOfrd": 0,
+                        "AdditionalTxnFeePub": 0,
+                        "PGCharge": 0,
+                        "OtherCharges": 0.00,
+                        "ChargeBU": [
+                            {
+                                "key": "TBOMARKUP",
+                                "value": 0
+                            },
+                            {
+                                "key": "GLOBALPROCUREMENTCHARGE",
+                                "value": 0
+                            },
+                            {
+                                "key": "CONVENIENCECHARGE",
+                                "value": 0
+                            },
+                            {
+                                "key": "OTHERCHARGE",
+                                "value": 0.00
+                            }
+                        ],
+                        "Discount": 0,
+                        "PublishedFare": 599,
+                        "CommissionEarned": 0,
+                        "PLBEarned": 0,
+                        "IncentiveEarned": 0,
+                        "OfferedFare": 599.00,
+                        "TdsOnCommission": 0,
+                        "TdsOnPLB": 0,
+                        "TdsOnIncentive": 0,
+                        "ServiceFee": 0,
+                        "TotalBaggageCharges": 0,
+                        "TotalMealCharges": 0,
+                        "TotalSeatCharges": 0,
+                        "TotalSpecialServiceCharges": 0
+                    },
+                    "FareBreakdown": [
+                        {
+                            "Currency": "INR",
+                            "PassengerType": 1,
+                            "PassengerCount": 1,
+                            "BaseFare": 100,
+                            "Tax": 499,
+                            "TaxBreakUp": [
+                                {
+                                    "key": "YQTax",
+                                    "value": 0
+                                },
+                                {
+                                    "key": "YR",
+                                    "value": 0
+                                }
+                            ],
+                            "YQTax": 0,
+                            "AdditionalTxnFeeOfrd": 0,
+                            "AdditionalTxnFeePub": 0,
+                            "PGCharge": 0,
+                            "SupplierReissueCharges": 0
+                        }
+                    ],
+                    "Segments": [
+                        [
+                            {
+                                "Baggage": "15 KG",
+                                "CabinBaggage": "7 KG",
+                                "CabinClass": 2,
+                                "TripIndicator": 1,
+                                "SegmentIndicator": 1,
+                                "Airline": {
+                                    "AirlineCode": "6E",
+                                    "AirlineName": "Indigo",
+                                    "FlightNumber": "2138",
+                                    "FareClass": "P",
+                                    "OperatingCarrier": ""
+                                },
+                                "NoOfSeatAvailable": 18,
+                                "Origin": {
+                                    "Airport": {
+                                        "AirportCode": "DEL",
+                                        "AirportName": "Indira Gandhi Airport",
+                                        "Terminal": "2",
+                                        "CityCode": "DEL",
+                                        "CityName": "Delhi",
+                                        "CountryCode": "IN",
+                                        "CountryName": "India"
+                                    },
+                                    "DepTime": "2022-11-12T12:01:00"
+                                },
+                                "Destination": {
+                                    "Airport": {
+                                        "AirportCode": "BOM",
+                                        "AirportName": "Mumbai",
+                                        "Terminal": "1",
+                                        "CityCode": "BOM",
+                                        "CityName": "Mumbai",
+                                        "CountryCode": "IN",
+                                        "CountryName": "India"
+                                    },
+                                    "ArrTime": "2022-11-12T14:16:00"
+                                },
+                                "Duration": 135,
+                                "GroundTime": 0,
+                                "Mile": 0,
+                                "StopOver": false,
+                                "FlightInfoIndex": "",
+                                "StopPoint": "",
+                                "StopPointArrivalTime": null,
+                                "StopPointDepartureTime": null,
+                                "Craft": "320",
+                                "Remark": null,
+                                "IsETicketEligible": true,
+                                "FlightStatus": "Confirmed",
+                                "Status": ""
+                            }
+                        ]
+                    ],
+                    "LastTicketDate": null,
+                    "TicketAdvisory": null,
+                    "FareRules": [
+                        {
+                            "Origin": "DEL",
+                            "Destination": "BOM",
+                            "Airline": "6E",
+                            "FareBasisCode": "PFLX",
+                            "FareRuleDetail": "",
+                            "FareRestriction": "",
+                            "FareFamilyCode": "",
+                            "FareRuleIndex": ""
+                        }
+                    ],
+                    "AirlineCode": "6E",
+                    "ValidatingAirline": "6E",
+                    "FareClassification": {
+                        "Color": "Yellow",
+                        "Type": "Coupon"
+                    }
+                },
+                {
+                    "IsHoldAllowedWithSSR": false,
+                    "ResultIndex": "OB6",
+                    "Source": 83,
+                    "IsLCC": true,
+                    "IsRefundable": true,
+                    "IsPanRequiredAtBook": false,
+                    "IsPanRequiredAtTicket": false,
+                    "IsPassportRequiredAtBook": false,
+                    "IsPassportRequiredAtTicket": false,
+                    "GSTAllowed": true,
+                    "IsCouponAppilcable": true,
+                    "IsGSTMandatory": false,
+                    "AirlineRemark": "6E2.",
+                    "ResultFareType": "RegularFare",
+                    "Fare": {
+                        "Currency": "INR",
+                        "BaseFare": 100,
+                        "Tax": 499,
+                        "TaxBreakup": [
+                            {
+                                "key": "K3",
+                                "value": 0
+                            },
+                            {
+                                "key": "YQTax",
+                                "value": 0
+                            },
+                            {
+                                "key": "YR",
+                                "value": 0
+                            },
+                            {
+                                "key": "PSF",
+                                "value": 0
+                            },
+                            {
+                                "key": "UDF",
+                                "value": 0
+                            },
+                            {
+                                "key": "INTax",
+                                "value": 0
+                            },
+                            {
+                                "key": "TransactionFee",
+                                "value": 0
+                            },
+                            {
+                                "key": "OtherTaxes",
+                                "value": 0
+                            }
+                        ],
+                        "YQTax": 0,
+                        "AdditionalTxnFeeOfrd": 0,
+                        "AdditionalTxnFeePub": 0,
+                        "PGCharge": 0,
+                        "OtherCharges": 0.00,
+                        "ChargeBU": [
+                            {
+                                "key": "TBOMARKUP",
+                                "value": 0
+                            },
+                            {
+                                "key": "GLOBALPROCUREMENTCHARGE",
+                                "value": 0
+                            },
+                            {
+                                "key": "CONVENIENCECHARGE",
+                                "value": 0
+                            },
+                            {
+                                "key": "OTHERCHARGE",
+                                "value": 0.00
+                            }
+                        ],
+                        "Discount": 0,
+                        "PublishedFare": 599,
+                        "CommissionEarned": 0,
+                        "PLBEarned": 0,
+                        "IncentiveEarned": 0,
+                        "OfferedFare": 599.00,
+                        "TdsOnCommission": 0,
+                        "TdsOnPLB": 0,
+                        "TdsOnIncentive": 0,
+                        "ServiceFee": 0,
+                        "TotalBaggageCharges": 0,
+                        "TotalMealCharges": 0,
+                        "TotalSeatCharges": 0,
+                        "TotalSpecialServiceCharges": 0
+                    },
+                    "FareBreakdown": [
+                        {
+                            "Currency": "INR",
+                            "PassengerType": 1,
+                            "PassengerCount": 1,
+                            "BaseFare": 100,
+                            "Tax": 499,
+                            "TaxBreakUp": [
+                                {
+                                    "key": "YQTax",
+                                    "value": 0
+                                },
+                                {
+                                    "key": "YR",
+                                    "value": 0
+                                }
+                            ],
+                            "YQTax": 0,
+                            "AdditionalTxnFeeOfrd": 0,
+                            "AdditionalTxnFeePub": 0,
+                            "PGCharge": 0,
+                            "SupplierReissueCharges": 0
+                        }
+                    ],
+                    "Segments": [
+                        [
+                            {
+                                "Baggage": "15 KG",
+                                "CabinBaggage": "7 KG",
+                                "CabinClass": 2,
+                                "TripIndicator": 1,
+                                "SegmentIndicator": 1,
+                                "Airline": {
+                                    "AirlineCode": "6E",
+                                    "AirlineName": "Indigo",
+                                    "FlightNumber": "2138",
+                                    "FareClass": "P",
+                                    "OperatingCarrier": ""
+                                },
+                                "NoOfSeatAvailable": 18,
+                                "Origin": {
+                                    "Airport": {
+                                        "AirportCode": "DEL",
+                                        "AirportName": "Indira Gandhi Airport",
+                                        "Terminal": "2",
+                                        "CityCode": "DEL",
+                                        "CityName": "Delhi",
+                                        "CountryCode": "IN",
+                                        "CountryName": "India"
+                                    },
+                                    "DepTime": "2022-11-12T12:01:00"
+                                },
+                                "Destination": {
+                                    "Airport": {
+                                        "AirportCode": "BOM",
+                                        "AirportName": "Mumbai",
+                                        "Terminal": "1",
+                                        "CityCode": "BOM",
+                                        "CityName": "Mumbai",
+                                        "CountryCode": "IN",
+                                        "CountryName": "India"
+                                    },
+                                    "ArrTime": "2022-11-12T14:16:00"
+                                },
+                                "Duration": 135,
+                                "GroundTime": 0,
+                                "Mile": 0,
+                                "StopOver": false,
+                                "FlightInfoIndex": "",
+                                "StopPoint": "",
+                                "StopPointArrivalTime": null,
+                                "StopPointDepartureTime": null,
+                                "Craft": "320",
+                                "Remark": null,
+                                "IsETicketEligible": true,
+                                "FlightStatus": "Confirmed",
+                                "Status": ""
+                            }
+                        ]
+                    ],
+                    "LastTicketDate": null,
+                    "TicketAdvisory": null,
+                    "FareRules": [
+                        {
+                            "Origin": "DEL",
+                            "Destination": "BOM",
+                            "Airline": "6E",
+                            "FareBasisCode": "PFLX",
+                            "FareRuleDetail": "",
+                            "FareRestriction": "",
+                            "FareFamilyCode": "",
+                            "FareRuleIndex": ""
+                        }
+                    ],
+                    "AirlineCode": "6E",
+                    "ValidatingAirline": "6E",
+                    "FareClassification": {
+                        "Color": "Blue",
+                        "Type": "Publish"
+                    }
+                },
+                {
+                    "IsHoldAllowedWithSSR": false,
+                    "ResultIndex": "OB7",
+                    "Source": 86,
+                    "IsLCC": true,
+                    "IsRefundable": true,
+                    "IsPanRequiredAtBook": false,
+                    "IsPanRequiredAtTicket": false,
+                    "IsPassportRequiredAtBook": false,
+                    "IsPassportRequiredAtTicket": false,
+                    "GSTAllowed": true,
+                    "IsCouponAppilcable": true,
+                    "IsGSTMandatory": false,
+                    "AirlineRemark": "6E5.",
+                    "ResultFareType": "RegularFare",
+                    "Fare": {
+                        "Currency": "INR",
+                        "BaseFare": 100,
+                        "Tax": 499,
+                        "TaxBreakup": [
+                            {
+                                "key": "K3",
+                                "value": 0
+                            },
+                            {
+                                "key": "YQTax",
+                                "value": 0
+                            },
+                            {
+                                "key": "YR",
+                                "value": 0
+                            },
+                            {
+                                "key": "PSF",
+                                "value": 0
+                            },
+                            {
+                                "key": "UDF",
+                                "value": 0
+                            },
+                            {
+                                "key": "INTax",
+                                "value": 0
+                            },
+                            {
+                                "key": "TransactionFee",
+                                "value": 0
+                            },
+                            {
+                                "key": "OtherTaxes",
+                                "value": 0
+                            }
+                        ],
+                        "YQTax": 0,
+                        "AdditionalTxnFeeOfrd": 0,
+                        "AdditionalTxnFeePub": 0,
+                        "PGCharge": 0,
+                        "OtherCharges": 0.00,
+                        "ChargeBU": [
+                            {
+                                "key": "TBOMARKUP",
+                                "value": 0
+                            },
+                            {
+                                "key": "GLOBALPROCUREMENTCHARGE",
+                                "value": 0
+                            },
+                            {
+                                "key": "CONVENIENCECHARGE",
+                                "value": 0
+                            },
+                            {
+                                "key": "OTHERCHARGE",
+                                "value": 0.00
+                            }
+                        ],
+                        "Discount": 0,
+                        "PublishedFare": 599,
+                        "CommissionEarned": 0,
+                        "PLBEarned": 0,
+                        "IncentiveEarned": 0,
+                        "OfferedFare": 599.00,
+                        "TdsOnCommission": 0,
+                        "TdsOnPLB": 0,
+                        "TdsOnIncentive": 0,
+                        "ServiceFee": 0,
+                        "TotalBaggageCharges": 0,
+                        "TotalMealCharges": 0,
+                        "TotalSeatCharges": 0,
+                        "TotalSpecialServiceCharges": 0
+                    },
+                    "FareBreakdown": [
+                        {
+                            "Currency": "INR",
+                            "PassengerType": 1,
+                            "PassengerCount": 1,
+                            "BaseFare": 100,
+                            "Tax": 499,
+                            "TaxBreakUp": [
+                                {
+                                    "key": "YQTax",
+                                    "value": 0
+                                },
+                                {
+                                    "key": "YR",
+                                    "value": 0
+                                }
+                            ],
+                            "YQTax": 0,
+                            "AdditionalTxnFeeOfrd": 0,
+                            "AdditionalTxnFeePub": 0,
+                            "PGCharge": 0,
+                            "SupplierReissueCharges": 0
+                        }
+                    ],
+                    "Segments": [
+                        [
+                            {
+                                "Baggage": "15 KG",
+                                "CabinBaggage": "7 KG",
+                                "CabinClass": 2,
+                                "TripIndicator": 1,
+                                "SegmentIndicator": 1,
+                                "Airline": {
+                                    "AirlineCode": "6E",
+                                    "AirlineName": "Indigo",
+                                    "FlightNumber": "2138",
+                                    "FareClass": "P",
+                                    "OperatingCarrier": ""
+                                },
+                                "NoOfSeatAvailable": 18,
+                                "Origin": {
+                                    "Airport": {
+                                        "AirportCode": "DEL",
+                                        "AirportName": "Indira Gandhi Airport",
+                                        "Terminal": "2",
+                                        "CityCode": "DEL",
+                                        "CityName": "Delhi",
+                                        "CountryCode": "IN",
+                                        "CountryName": "India"
+                                    },
+                                    "DepTime": "2022-11-12T12:01:00"
+                                },
+                                "Destination": {
+                                    "Airport": {
+                                        "AirportCode": "BOM",
+                                        "AirportName": "Mumbai",
+                                        "Terminal": "1",
+                                        "CityCode": "BOM",
+                                        "CityName": "Mumbai",
+                                        "CountryCode": "IN",
+                                        "CountryName": "India"
+                                    },
+                                    "ArrTime": "2022-11-12T14:16:00"
+                                },
+                                "Duration": 135,
+                                "GroundTime": 0,
+                                "Mile": 0,
+                                "StopOver": false,
+                                "FlightInfoIndex": "",
+                                "StopPoint": "",
+                                "StopPointArrivalTime": null,
+                                "StopPointDepartureTime": null,
+                                "Craft": "320",
+                                "Remark": null,
+                                "IsETicketEligible": true,
+                                "FlightStatus": "Confirmed",
+                                "Status": ""
+                            }
+                        ]
+                    ],
+                    "LastTicketDate": null,
+                    "TicketAdvisory": null,
+                    "FareRules": [
+                        {
+                            "Origin": "DEL",
+                            "Destination": "BOM",
+                            "Airline": "6E",
+                            "FareBasisCode": "PFLX",
+                            "FareRuleDetail": "",
+                            "FareRestriction": "",
+                            "FareFamilyCode": "",
+                            "FareRuleIndex": ""
+                        }
+                    ],
+                    "AirlineCode": "6E",
+                    "ValidatingAirline": "6E"
+                },
+                {
+                    "IsHoldAllowedWithSSR": false,
+                    "ResultIndex": "OB10",
+                    "Source": 6,
+                    "IsLCC": true,
+                    "IsRefundable": true,
+                    "IsPanRequiredAtBook": false,
+                    "IsPanRequiredAtTicket": false,
+                    "IsPassportRequiredAtBook": false,
+                    "IsPassportRequiredAtTicket": false,
+                    "GSTAllowed": true,
+                    "IsCouponAppilcable": true,
+                    "IsGSTMandatory": true,
+                    "AirlineRemark": "6E FARE test.",
+                    "ResultFareType": "RegularFare",
+                    "Fare": {
+                        "Currency": "INR",
+                        "BaseFare": 100,
+                        "Tax": 499,
+                        "TaxBreakup": [
+                            {
+                                "key": "K3",
+                                "value": 0
+                            },
+                            {
+                                "key": "YQTax",
+                                "value": 0
+                            },
+                            {
+                                "key": "YR",
+                                "value": 0
+                            },
+                            {
+                                "key": "PSF",
+                                "value": 0
+                            },
+                            {
+                                "key": "UDF",
+                                "value": 0
+                            },
+                            {
+                                "key": "INTax",
+                                "value": 0
+                            },
+                            {
+                                "key": "TransactionFee",
+                                "value": 0
+                            },
+                            {
+                                "key": "OtherTaxes",
+                                "value": 0
+                            }
+                        ],
+                        "YQTax": 0,
+                        "AdditionalTxnFeeOfrd": 0,
+                        "AdditionalTxnFeePub": 0,
+                        "PGCharge": 0,
+                        "OtherCharges": 0.00,
+                        "ChargeBU": [
+                            {
+                                "key": "TBOMARKUP",
+                                "value": 0
+                            },
+                            {
+                                "key": "GLOBALPROCUREMENTCHARGE",
+                                "value": 0
+                            },
+                            {
+                                "key": "CONVENIENCECHARGE",
+                                "value": 0
+                            },
+                            {
+                                "key": "OTHERCHARGE",
+                                "value": 0.00
+                            }
+                        ],
+                        "Discount": 0,
+                        "PublishedFare": 599,
+                        "CommissionEarned": 0,
+                        "PLBEarned": 0,
+                        "IncentiveEarned": 0,
+                        "OfferedFare": 599.00,
+                        "TdsOnCommission": 0,
+                        "TdsOnPLB": 0,
+                        "TdsOnIncentive": 0,
+                        "ServiceFee": 0,
+                        "TotalBaggageCharges": 0,
+                        "TotalMealCharges": 0,
+                        "TotalSeatCharges": 0,
+                        "TotalSpecialServiceCharges": 0
+                    },
+                    "FareBreakdown": [
+                        {
+                            "Currency": "INR",
+                            "PassengerType": 1,
+                            "PassengerCount": 1,
+                            "BaseFare": 100,
+                            "Tax": 499,
+                            "TaxBreakUp": [
+                                {
+                                    "key": "YQTax",
+                                    "value": 0
+                                },
+                                {
+                                    "key": "YR",
+                                    "value": 0
+                                }
+                            ],
+                            "YQTax": 0,
+                            "AdditionalTxnFeeOfrd": 0,
+                            "AdditionalTxnFeePub": 0,
+                            "PGCharge": 0,
+                            "SupplierReissueCharges": 0
+                        }
+                    ],
+                    "Segments": [
+                        [
+                            {
+                                "Baggage": "15 KG",
+                                "CabinBaggage": " 7 KG",
+                                "CabinClass": 2,
+                                "TripIndicator": 1,
+                                "SegmentIndicator": 1,
+                                "Airline": {
+                                    "AirlineCode": "6E",
+                                    "AirlineName": "Indigo",
+                                    "FlightNumber": "2138",
+                                    "FareClass": "P",
+                                    "OperatingCarrier": ""
+                                },
+                                "NoOfSeatAvailable": 18,
+                                "Origin": {
+                                    "Airport": {
+                                        "AirportCode": "DEL",
+                                        "AirportName": "Indira Gandhi Airport",
+                                        "Terminal": "2",
+                                        "CityCode": "DEL",
+                                        "CityName": "Delhi",
+                                        "CountryCode": "IN",
+                                        "CountryName": "India"
+                                    },
+                                    "DepTime": "2022-11-12T12:01:00"
+                                },
+                                "Destination": {
+                                    "Airport": {
+                                        "AirportCode": "BOM",
+                                        "AirportName": "Mumbai",
+                                        "Terminal": "1",
+                                        "CityCode": "BOM",
+                                        "CityName": "Mumbai",
+                                        "CountryCode": "IN",
+                                        "CountryName": "India"
+                                    },
+                                    "ArrTime": "2022-11-12T14:16:00"
+                                },
+                                "Duration": 135,
+                                "GroundTime": 0,
+                                "Mile": 0,
+                                "StopOver": false,
+                                "FlightInfoIndex": "",
+                                "StopPoint": "",
+                                "StopPointArrivalTime": null,
+                                "StopPointDepartureTime": null,
+                                "Craft": "320",
+                                "Remark": null,
+                                "IsETicketEligible": true,
+                                "FlightStatus": "Confirmed",
+                                "Status": ""
+                            }
+                        ]
+                    ],
+                    "LastTicketDate": null,
+                    "TicketAdvisory": null,
+                    "FareRules": [
+                        {
+                            "Origin": "DEL",
+                            "Destination": "BOM",
+                            "Airline": "6E",
+                            "FareBasisCode": "PFLX",
+                            "FareRuleDetail": "",
+                            "FareRestriction": "",
+                            "FareFamilyCode": "",
+                            "FareRuleIndex": ""
+                        }
+                    ],
+                    "AirlineCode": "6E",
+                    "ValidatingAirline": "6E",
+                    "FareClassification": {
+                        "Color": "Orange",
+                        "Type": "SME"
+                    }
+                },
+                {
+                    "IsHoldAllowedWithSSR": false,
+                    "ResultIndex": "OB8",
+                    "Source": 5,
+                    "IsLCC": false,
+                    "IsRefundable": true,
+                    "IsPanRequiredAtBook": false,
+                    "IsPanRequiredAtTicket": false,
+                    "IsPassportRequiredAtBook": false,
+                    "IsPassportRequiredAtTicket": false,
+                    "GSTAllowed": true,
+                    "IsCouponAppilcable": true,
+                    "IsGSTMandatory": false,
+                    "AirlineRemark": "CORPORATE FARE.",
+                    "ResultFareType": "RegularFare",
+                    "Fare": {
+                        "Currency": "INR",
+                        "BaseFare": 3030,
+                        "Tax": 720,
+                        "TaxBreakup": [
+                            {
+                                "key": "K3",
+                                "value": 160
+                            },
+                            {
+                                "key": "YQTax",
+                                "value": 0
+                            },
+                            {
+                                "key": "YR",
+                                "value": 170
+                            },
+                            {
+                                "key": "PSF",
+                                "value": 0
+                            },
+                            {
+                                "key": "UDF",
+                                "value": 0
+                            },
+                            {
+                                "key": "INTax",
+                                "value": 0
+                            },
+                            {
+                                "key": "TransactionFee",
+                                "value": 0
+                            },
+                            {
+                                "key": "OtherTaxes",
+                                "value": 390
+                            }
+                        ],
+                        "YQTax": 0,
+                        "AdditionalTxnFeeOfrd": 0,
+                        "AdditionalTxnFeePub": 0,
+                        "PGCharge": 0,
+                        "OtherCharges": 0.00,
+                        "ChargeBU": [
+                            {
+                                "key": "TBOMARKUP",
+                                "value": 0
+                            },
+                            {
+                                "key": "GLOBALPROCUREMENTCHARGE",
+                                "value": 0
+                            },
+                            {
+                                "key": "CONVENIENCECHARGE",
+                                "value": 0
+                            },
+                            {
+                                "key": "OTHERCHARGE",
+                                "value": 0.00
+                            }
+                        ],
+                        "Discount": 0,
+                        "PublishedFare": 3750,
+                        "CommissionEarned": 26.71,
+                        "PLBEarned": 0,
+                        "IncentiveEarned": 0.00,
+                        "OfferedFare": 3723.29,
+                        "TdsOnCommission": 10.68,
+                        "TdsOnPLB": 0,
+                        "TdsOnIncentive": 0.00,
+                        "ServiceFee": 0,
+                        "TotalBaggageCharges": 0,
+                        "TotalMealCharges": 0,
+                        "TotalSeatCharges": 0,
+                        "TotalSpecialServiceCharges": 0
+                    },
+                    "FareBreakdown": [
+                        {
+                            "Currency": "INR",
+                            "PassengerType": 1,
+                            "PassengerCount": 1,
+                            "BaseFare": 3030,
+                            "Tax": 720,
+                            "TaxBreakUp": [
+                                {
+                                    "key": "K3",
+                                    "value": 160
+                                },
+                                {
+                                    "key": "YR",
+                                    "value": 170
+                                },
+                                {
+                                    "key": "OtherTaxes",
+                                    "value": 390
+                                }
+                            ],
+                            "YQTax": 0,
+                            "AdditionalTxnFeeOfrd": 0,
+                            "AdditionalTxnFeePub": 0,
+                            "PGCharge": 0,
+                            "SupplierReissueCharges": 0
+                        }
+                    ],
+                    "Segments": [
+                        [
+                            {
+                                "Baggage": "25 KG",
+                                "CabinBaggage": null,
+                                "CabinClass": 2,
+                                "TripIndicator": 1,
+                                "SegmentIndicator": 1,
+                                "Airline": {
+                                    "AirlineCode": "AI",
+                                    "AirlineName": "Air India",
+                                    "FlightNumber": "863",
+                                    "FareClass": "S",
+                                    "OperatingCarrier": ""
+                                },
+                                "NoOfSeatAvailable": 9,
+                                "Origin": {
+                                    "Airport": {
+                                        "AirportCode": "DEL",
+                                        "AirportName": "Indira Gandhi Airport",
+                                        "Terminal": "",
+                                        "CityCode": "DEL",
+                                        "CityName": "Delhi",
+                                        "CountryCode": "IN",
+                                        "CountryName": "India"
+                                    },
+                                    "DepTime": "2022-11-12T13:00:00"
+                                },
+                                "Destination": {
+                                    "Airport": {
+                                        "AirportCode": "BOM",
+                                        "AirportName": "Mumbai",
+                                        "Terminal": "",
+                                        "CityCode": "BOM",
+                                        "CityName": "Mumbai",
+                                        "CountryCode": "IN",
+                                        "CountryName": "India"
+                                    },
+                                    "ArrTime": "2022-11-12T15:10:00"
+                                },
+                                "Duration": 130,
+                                "GroundTime": 0,
+                                "Mile": 0,
+                                "StopOver": false,
+                                "FlightInfoIndex": "",
+                                "StopPoint": "",
+                                "StopPointArrivalTime": "0001-01-01T00:00:00",
+                                "StopPointDepartureTime": "0001-01-01T00:00:00",
+                                "Craft": "32B",
+                                "Remark": null,
+                                "IsETicketEligible": true,
+                                "FlightStatus": "Confirmed",
+                                "Status": ""
+                            }
+                        ]
+                    ],
+                    "LastTicketDate": "2022-10-13T23:59:00.000",
+                    "TicketAdvisory": null,
+                    "FareRules": [
+                        {
+                            "Origin": "DEL",
+                            "Destination": "BOM",
+                            "Airline": "AI",
+                            "FareBasisCode": "SAP30",
+                            "FareRuleDetail": "",
+                            "FareRestriction": "",
+                            "FareFamilyCode": "",
+                            "FareRuleIndex": ""
+                        }
+                    ],
+                    "AirlineCode": "AI",
+                    "ValidatingAirline": "AI",
+                    "FareClassification": {
+                        "Color": "Blue",
+                        "Type": "Publish"
+                    }
+                },
+                {
+                    "IsHoldAllowedWithSSR": false,
+                    "ResultIndex": "OB9",
+                    "Source": 5,
+                    "IsLCC": false,
+                    "IsRefundable": true,
+                    "IsPanRequiredAtBook": false,
+                    "IsPanRequiredAtTicket": false,
+                    "IsPassportRequiredAtBook": false,
+                    "IsPassportRequiredAtTicket": false,
+                    "GSTAllowed": true,
+                    "IsCouponAppilcable": true,
+                    "IsGSTMandatory": false,
+                    "AirlineRemark": "CORPORATE FARE.",
+                    "ResultFareType": "RegularFare",
+                    "Fare": {
+                        "Currency": "INR",
+                        "BaseFare": 4060,
+                        "Tax": 950,
+                        "TaxBreakup": [
+                            {
+                                "key": "K3",
+                                "value": 220
+                            },
+                            {
+                                "key": "YQTax",
+                                "value": 0
+                            },
+                            {
+                                "key": "YR",
+                                "value": 340
+                            },
+                            {
+                                "key": "PSF",
+                                "value": 0
+                            },
+                            {
+                                "key": "UDF",
+                                "value": 0
+                            },
+                            {
+                                "key": "INTax",
+                                "value": 0
+                            },
+                            {
+                                "key": "TransactionFee",
+                                "value": 0
+                            },
+                            {
+                                "key": "OtherTaxes",
+                                "value": 390
+                            }
+                        ],
+                        "YQTax": 0,
+                        "AdditionalTxnFeeOfrd": 0,
+                        "AdditionalTxnFeePub": 0,
+                        "PGCharge": 0,
+                        "OtherCharges": 0.00,
+                        "ChargeBU": [
+                            {
+                                "key": "TBOMARKUP",
+                                "value": 0
+                            },
+                            {
+                                "key": "GLOBALPROCUREMENTCHARGE",
+                                "value": 0
+                            },
+                            {
+                                "key": "CONVENIENCECHARGE",
+                                "value": 0
+                            },
+                            {
+                                "key": "OTHERCHARGE",
+                                "value": 0.00
+                            }
+                        ],
+                        "Discount": 0,
+                        "PublishedFare": 5010,
+                        "CommissionEarned": 35.79,
+                        "PLBEarned": 0,
+                        "IncentiveEarned": 0.00,
+                        "OfferedFare": 4974.21,
+                        "TdsOnCommission": 14.32,
+                        "TdsOnPLB": 0,
+                        "TdsOnIncentive": 0.00,
+                        "ServiceFee": 0,
+                        "TotalBaggageCharges": 0,
+                        "TotalMealCharges": 0,
+                        "TotalSeatCharges": 0,
+                        "TotalSpecialServiceCharges": 0
+                    },
+                    "FareBreakdown": [
+                        {
+                            "Currency": "INR",
+                            "PassengerType": 1,
+                            "PassengerCount": 1,
+                            "BaseFare": 4060,
+                            "Tax": 950,
+                            "TaxBreakUp": [
+                                {
+                                    "key": "K3",
+                                    "value": 220
+                                },
+                                {
+                                    "key": "YR",
+                                    "value": 340
+                                },
+                                {
+                                    "key": "OtherTaxes",
+                                    "value": 390
+                                }
+                            ],
+                            "YQTax": 0,
+                            "AdditionalTxnFeeOfrd": 0,
+                            "AdditionalTxnFeePub": 0,
+                            "PGCharge": 0,
+                            "SupplierReissueCharges": 0
+                        }
+                    ],
+                    "Segments": [
+                        [
+                            {
+                                "Baggage": "25 KG",
+                                "CabinBaggage": null,
+                                "CabinClass": 2,
+                                "TripIndicator": 1,
+                                "SegmentIndicator": 1,
+                                "Airline": {
+                                    "AirlineCode": "AI",
+                                    "AirlineName": "Air India",
+                                    "FlightNumber": "491",
+                                    "FareClass": "S",
+                                    "OperatingCarrier": ""
+                                },
+                                "NoOfSeatAvailable": 9,
+                                "Origin": {
+                                    "Airport": {
+                                        "AirportCode": "DEL",
+                                        "AirportName": "Indira Gandhi Airport",
+                                        "Terminal": "3",
+                                        "CityCode": "DEL",
+                                        "CityName": "Delhi",
+                                        "CountryCode": "IN",
+                                        "CountryName": "India"
+                                    },
+                                    "DepTime": "2022-11-12T12:00:00"
+                                },
+                                "Destination": {
+                                    "Airport": {
+                                        "AirportCode": "JAI",
+                                        "AirportName": "Jaipur",
+                                        "Terminal": "2",
+                                        "CityCode": "JAI",
+                                        "CityName": "Jaipur",
+                                        "CountryCode": "IN",
+                                        "CountryName": "India"
+                                    },
+                                    "ArrTime": "2022-11-12T12:55:00"
+                                },
+                                "Duration": 55,
+                                "GroundTime": 0,
+                                "Mile": 0,
+                                "StopOver": false,
+                                "FlightInfoIndex": "",
+                                "StopPoint": "",
+                                "StopPointArrivalTime": "0001-01-01T00:00:00",
+                                "StopPointDepartureTime": "0001-01-01T00:00:00",
+                                "Craft": "321",
+                                "Remark": null,
+                                "IsETicketEligible": true,
+                                "FlightStatus": "Confirmed",
+                                "Status": ""
+                            },
+                            {
+                                "Baggage": "25 KG",
+                                "CabinBaggage": null,
+                                "CabinClass": 2,
+                                "TripIndicator": 1,
+                                "SegmentIndicator": 2,
+                                "Airline": {
+                                    "AirlineCode": "AI",
+                                    "AirlineName": "Air India",
+                                    "FlightNumber": "612",
+                                    "FareClass": "S",
+                                    "OperatingCarrier": ""
+                                },
+                                "NoOfSeatAvailable": 9,
+                                "Origin": {
+                                    "Airport": {
+                                        "AirportCode": "JAI",
+                                        "AirportName": "Jaipur",
+                                        "Terminal": "2",
+                                        "CityCode": "JAI",
+                                        "CityName": "Jaipur",
+                                        "CountryCode": "IN",
+                                        "CountryName": "India"
+                                    },
+                                    "DepTime": "2022-11-12T14:00:00"
+                                },
+                                "Destination": {
+                                    "Airport": {
+                                        "AirportCode": "BOM",
+                                        "AirportName": "Mumbai",
+                                        "Terminal": "2",
+                                        "CityCode": "BOM",
+                                        "CityName": "Mumbai",
+                                        "CountryCode": "IN",
+                                        "CountryName": "India"
+                                    },
+                                    "ArrTime": "2022-11-12T15:50:00"
+                                },
+                                "AccumulatedDuration": 230,
+                                "Duration": 110,
+                                "GroundTime": 65,
+                                "Mile": 0,
+                                "StopOver": false,
+                                "FlightInfoIndex": "",
+                                "StopPoint": "",
+                                "StopPointArrivalTime": "0001-01-01T00:00:00",
+                                "StopPointDepartureTime": "0001-01-01T00:00:00",
+                                "Craft": "321",
+                                "Remark": null,
+                                "IsETicketEligible": true,
+                                "FlightStatus": "Confirmed",
+                                "Status": ""
+                            }
+                        ]
+                    ],
+                    "LastTicketDate": "2022-10-13T23:59:00.000",
+                    "TicketAdvisory": null,
+                    "FareRules": [
+                        {
+                            "Origin": "DEL",
+                            "Destination": "JAI",
+                            "Airline": "AI",
+                            "FareBasisCode": "SAP30",
+                            "FareRuleDetail": "",
+                            "FareRestriction": "",
+                            "FareFamilyCode": "",
+                            "FareRuleIndex": ""
+                        },
+                        {
+                            "Origin": "JAI",
+                            "Destination": "BOM",
+                            "Airline": "AI",
+                            "FareBasisCode": "SAP30",
+                            "FareRuleDetail": "",
+                            "FareRestriction": "",
+                            "FareFamilyCode": "",
+                            "FareRuleIndex": ""
+                        }
+                    ],
+                    "PenaltyCharges": {
+                        "ReissueCharge": "3000 INR",
+                        "CancellationCharge": "4000 INR"
+                    },
+                    "AirlineCode": "AI",
+                    "MiniFareRules": [
+                        [
+                            {
+                                "JourneyPoints": "DEL-JAI-BOM",
+                                "Type": "Reissue",
+                                "From": null,
+                                "To": null,
+                                "Unit": null,
+                                "Details": "3000 INR"
+                            },
+                            {
+                                "JourneyPoints": "DEL-JAI-BOM",
+                                "Type": "Cancellation",
+                                "From": null,
+                                "To": null,
+                                "Unit": null,
+                                "Details": "4000 INR"
+                            }
+                        ]
+                    ],
+                    "ValidatingAirline": "AI",
+                    "FareClassification": {
+                        "Color": "Blue",
+                        "Type": "Publish"
+                    }
+                },
+                {
+                    "IsHoldAllowedWithSSR": false,
+                    "IsUpsellAllowed": true,
+                    "ResultIndex": "OB1",
+                    "Source": 4,
+                    "IsLCC": false,
+                    "IsRefundable": false,
+                    "IsPanRequiredAtBook": false,
+                    "IsPanRequiredAtTicket": false,
+                    "IsPassportRequiredAtBook": false,
+                    "IsPassportRequiredAtTicket": false,
+                    "GSTAllowed": true,
+                    "IsCouponAppilcable": true,
+                    "IsGSTMandatory": false,
+                    "AirlineRemark": "test uk remarks.",
+                    "ResultFareType": "RegularFare",
+                    "Fare": {
+                        "Currency": "INR",
+                        "BaseFare": 5270,
+                        "Tax": 791,
+                        "TaxBreakup": [
+                            {
+                                "key": "K3",
+                                "value": 0
+                            },
+                            {
+                                "key": "YQTax",
+                                "value": 0
+                            },
+                            {
+                                "key": "YR",
+                                "value": 130
+                            },
+                            {
+                                "key": "PSF",
+                                "value": 0
+                            },
+                            {
+                                "key": "UDF",
+                                "value": 0
+                            },
+                            {
+                                "key": "INTax",
+                                "value": 0
+                            },
+                            {
+                                "key": "TransactionFee",
+                                "value": 0
+                            },
+                            {
+                                "key": "OtherTaxes",
+                                "value": 661
+                            }
+                        ],
+                        "YQTax": 0,
+                        "AdditionalTxnFeeOfrd": 0,
+                        "AdditionalTxnFeePub": 0,
+                        "PGCharge": 0,
+                        "OtherCharges": 0.00,
+                        "ChargeBU": [
+                            {
+                                "key": "TBOMARKUP",
+                                "value": 0
+                            },
+                            {
+                                "key": "GLOBALPROCUREMENTCHARGE",
+                                "value": 0
+                            },
+                            {
+                                "key": "CONVENIENCECHARGE",
+                                "value": 0
+                            },
+                            {
+                                "key": "OTHERCHARGE",
+                                "value": 0.00
+                            }
+                        ],
+                        "Discount": 0,
+                        "PublishedFare": 6061,
+                        "CommissionEarned": 0,
+                        "PLBEarned": 0,
+                        "IncentiveEarned": 0,
+                        "OfferedFare": 6061.00,
+                        "TdsOnCommission": 0,
+                        "TdsOnPLB": 0,
+                        "TdsOnIncentive": 0,
+                        "ServiceFee": 0,
+                        "TotalBaggageCharges": 0,
+                        "TotalMealCharges": 0,
+                        "TotalSeatCharges": 0,
+                        "TotalSpecialServiceCharges": 0
+                    },
+                    "FareBreakdown": [
+                        {
+                            "Currency": "INR",
+                            "PassengerType": 1,
+                            "PassengerCount": 1,
+                            "BaseFare": 5270,
+                            "Tax": 791,
+                            "TaxBreakUp": [
+                                {
+                                    "key": "YQTax",
+                                    "value": 0
+                                },
+                                {
+                                    "key": "YR",
+                                    "value": 130
+                                },
+                                {
+                                    "key": "OtherTaxes",
+                                    "value": 661
+                                }
+                            ],
+                            "YQTax": 0,
+                            "AdditionalTxnFeeOfrd": 0,
+                            "AdditionalTxnFeePub": 0,
+                            "PGCharge": 0,
+                            "SupplierReissueCharges": 0
+                        }
+                    ],
+                    "Segments": [
+                        [
+                            {
+                                "Baggage": "1 PC(s)",
+                                "CabinBaggage": null,
+                                "CabinClass": 2,
+                                "TripIndicator": 1,
+                                "SegmentIndicator": 1,
+                                "Airline": {
+                                    "AirlineCode": "UK",
+                                    "AirlineName": "Vistara",
+                                    "FlightNumber": "993",
+                                    "FareClass": "O",
+                                    "OperatingCarrier": "UK"
+                                },
+                                "NoOfSeatAvailable": 9,
+                                "Origin": {
+                                    "Airport": {
+                                        "AirportCode": "DEL",
+                                        "AirportName": "Indira Gandhi Airport",
+                                        "Terminal": "3",
+                                        "CityCode": "DEL",
+                                        "CityName": "Delhi",
+                                        "CountryCode": "IN",
+                                        "CountryName": "India"
+                                    },
+                                    "DepTime": "2022-11-12T12:50:00"
+                                },
+                                "Destination": {
+                                    "Airport": {
+                                        "AirportCode": "BOM",
+                                        "AirportName": "Mumbai",
+                                        "Terminal": "2",
+                                        "CityCode": "BOM",
+                                        "CityName": "Mumbai",
+                                        "CountryCode": "IN",
+                                        "CountryName": "India"
+                                    },
+                                    "ArrTime": "2022-11-12T15:00:00"
+                                },
+                                "AccumulatedDuration": 130,
+                                "Duration": 130,
+                                "GroundTime": 0,
+                                "Mile": 0,
+                                "StopOver": false,
+                                "FlightInfoIndex": "",
+                                "StopPoint": "",
+                                "StopPointArrivalTime": null,
+                                "StopPointDepartureTime": null,
+                                "Craft": "320",
+                                "Remark": null,
+                                "IsETicketEligible": true,
+                                "FlightStatus": "Confirmed",
+                                "Status": ""
+                            }
+                        ]
+                    ],
+                    "LastTicketDate": "06APR22",
+                    "TicketAdvisory": "TICKETS ARE NON-REFUNDABLE \nLAST TKT DTE 06APR22  - SEE ADV PURCHASE \n",
+                    "FareRules": [
+                        {
+                            "Origin": "DEL",
+                            "Destination": "BOM",
+                            "Airline": "UK",
+                            "FareBasisCode": "O15RPRYL",
+                            "FareRuleDetail": "",
+                            "FareRestriction": "Y",
+                            "FareFamilyCode": "",
+                            "FareRuleIndex": ""
+                        }
+                    ],
+                    "PenaltyCharges": {
+                        "ReissueCharge": "3000",
+                        "CancellationCharge": "5070"
+                    },
+                    "AirlineCode": "UK",
+                    "MiniFareRules": [
+                        [
+                            {
+                                "JourneyPoints": "DEL-BOM",
+                                "Type": "Reissue",
+                                "From": null,
+                                "To": null,
+                                "Unit": null,
+                                "Details": "3000"
+                            },
+                            {
+                                "JourneyPoints": "DEL-BOM",
+                                "Type": "Cancellation",
+                                "From": null,
+                                "To": null,
+                                "Unit": null,
+                                "Details": "5070"
+                            }
+                        ]
+                    ],
+                    "ValidatingAirline": "UK",
+                    "FareClassification": {
+                        "Color": "Blue",
+                        "Type": "Publish"
+                    }
+                },
+                {
+                    "IsHoldAllowedWithSSR": false,
+                    "IsUpsellAllowed": true,
+                    "ResultIndex": "OB2",
+                    "Source": 4,
+                    "IsLCC": false,
+                    "IsRefundable": false,
+                    "IsPanRequiredAtBook": false,
+                    "IsPanRequiredAtTicket": false,
+                    "IsPassportRequiredAtBook": false,
+                    "IsPassportRequiredAtTicket": false,
+                    "GSTAllowed": true,
+                    "IsCouponAppilcable": true,
+                    "IsGSTMandatory": false,
+                    "AirlineRemark": "test uk remarks.",
+                    "ResultFareType": "RegularFare",
+                    "Fare": {
+                        "Currency": "INR",
+                        "BaseFare": 5270,
+                        "Tax": 791,
+                        "TaxBreakup": [
+                            {
+                                "key": "K3",
+                                "value": 0
+                            },
+                            {
+                                "key": "YQTax",
+                                "value": 0
+                            },
+                            {
+                                "key": "YR",
+                                "value": 130
+                            },
+                            {
+                                "key": "PSF",
+                                "value": 0
+                            },
+                            {
+                                "key": "UDF",
+                                "value": 0
+                            },
+                            {
+                                "key": "INTax",
+                                "value": 0
+                            },
+                            {
+                                "key": "TransactionFee",
+                                "value": 0
+                            },
+                            {
+                                "key": "OtherTaxes",
+                                "value": 661
+                            }
+                        ],
+                        "YQTax": 0,
+                        "AdditionalTxnFeeOfrd": 0,
+                        "AdditionalTxnFeePub": 0,
+                        "PGCharge": 0,
+                        "OtherCharges": 0.00,
+                        "ChargeBU": [
+                            {
+                                "key": "TBOMARKUP",
+                                "value": 0
+                            },
+                            {
+                                "key": "GLOBALPROCUREMENTCHARGE",
+                                "value": 0
+                            },
+                            {
+                                "key": "CONVENIENCECHARGE",
+                                "value": 0
+                            },
+                            {
+                                "key": "OTHERCHARGE",
+                                "value": 0.00
+                            }
+                        ],
+                        "Discount": 0,
+                        "PublishedFare": 6061,
+                        "CommissionEarned": 0,
+                        "PLBEarned": 0,
+                        "IncentiveEarned": 0,
+                        "OfferedFare": 6061.00,
+                        "TdsOnCommission": 0,
+                        "TdsOnPLB": 0,
+                        "TdsOnIncentive": 0,
+                        "ServiceFee": 0,
+                        "TotalBaggageCharges": 0,
+                        "TotalMealCharges": 0,
+                        "TotalSeatCharges": 0,
+                        "TotalSpecialServiceCharges": 0
+                    },
+                    "FareBreakdown": [
+                        {
+                            "Currency": "INR",
+                            "PassengerType": 1,
+                            "PassengerCount": 1,
+                            "BaseFare": 5270,
+                            "Tax": 791,
+                            "TaxBreakUp": [
+                                {
+                                    "key": "YQTax",
+                                    "value": 0
+                                },
+                                {
+                                    "key": "YR",
+                                    "value": 130
+                                },
+                                {
+                                    "key": "OtherTaxes",
+                                    "value": 661
+                                }
+                            ],
+                            "YQTax": 0,
+                            "AdditionalTxnFeeOfrd": 0,
+                            "AdditionalTxnFeePub": 0,
+                            "PGCharge": 0,
+                            "SupplierReissueCharges": 0
+                        }
+                    ],
+                    "Segments": [
+                        [
+                            {
+                                "Baggage": "1 PC(s)",
+                                "CabinBaggage": null,
+                                "CabinClass": 2,
+                                "TripIndicator": 1,
+                                "SegmentIndicator": 1,
+                                "Airline": {
+                                    "AirlineCode": "UK",
+                                    "AirlineName": "Vistara",
+                                    "FlightNumber": "945",
+                                    "FareClass": "O",
+                                    "OperatingCarrier": "UK"
+                                },
+                                "NoOfSeatAvailable": 9,
+                                "Origin": {
+                                    "Airport": {
+                                        "AirportCode": "DEL",
+                                        "AirportName": "Indira Gandhi Airport",
+                                        "Terminal": "3",
+                                        "CityCode": "DEL",
+                                        "CityName": "Delhi",
+                                        "CountryCode": "IN",
+                                        "CountryName": "India"
+                                    },
+                                    "DepTime": "2022-11-12T11:40:00"
+                                },
+                                "Destination": {
+                                    "Airport": {
+                                        "AirportCode": "BOM",
+                                        "AirportName": "Mumbai",
+                                        "Terminal": "2",
+                                        "CityCode": "BOM",
+                                        "CityName": "Mumbai",
+                                        "CountryCode": "IN",
+                                        "CountryName": "India"
+                                    },
+                                    "ArrTime": "2022-11-12T14:00:00"
+                                },
+                                "AccumulatedDuration": 140,
+                                "Duration": 140,
+                                "GroundTime": 0,
+                                "Mile": 0,
+                                "StopOver": false,
+                                "FlightInfoIndex": "",
+                                "StopPoint": "",
+                                "StopPointArrivalTime": null,
+                                "StopPointDepartureTime": null,
+                                "Craft": "320",
+                                "Remark": null,
+                                "IsETicketEligible": true,
+                                "FlightStatus": "Confirmed",
+                                "Status": ""
+                            }
+                        ]
+                    ],
+                    "LastTicketDate": "06APR22",
+                    "TicketAdvisory": "TICKETS ARE NON-REFUNDABLE \nLAST TKT DTE 06APR22  - SEE ADV PURCHASE \n",
+                    "FareRules": [
+                        {
+                            "Origin": "DEL",
+                            "Destination": "BOM",
+                            "Airline": "UK",
+                            "FareBasisCode": "O15RPRYL",
+                            "FareRuleDetail": "",
+                            "FareRestriction": "Y",
+                            "FareFamilyCode": "",
+                            "FareRuleIndex": ""
+                        }
+                    ],
+                    "PenaltyCharges": {
+                        "ReissueCharge": "3000",
+                        "CancellationCharge": "5070"
+                    },
+                    "AirlineCode": "UK",
+                    "MiniFareRules": [
+                        [
+                            {
+                                "JourneyPoints": "DEL-BOM",
+                                "Type": "Reissue",
+                                "From": null,
+                                "To": null,
+                                "Unit": null,
+                                "Details": "3000"
+                            },
+                            {
+                                "JourneyPoints": "DEL-BOM",
+                                "Type": "Cancellation",
+                                "From": null,
+                                "To": null,
+                                "Unit": null,
+                                "Details": "5070"
+                            }
+                        ]
+                    ],
+                    "ValidatingAirline": "UK",
+                    "FareClassification": {
+                        "Color": "Blue",
+                        "Type": "Publish"
+                    }
+                }
+            ]
+        ]
+    }
+}

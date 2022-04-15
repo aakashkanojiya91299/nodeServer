@@ -1,0 +1,24 @@
+{
+    "search":{
+    "EndUserIp": "192.168.10.10",
+    "TokenId": "97d3e56f-a4ab-473d-b91e-2f80f4997531",
+    "AdultCount": "1",
+    "ChildCount": "0",
+    "InfantCount": "0",
+    "DirectFlight": "false",
+    "OneStopFlight": "false",
+    "JourneyType": "1",
+    "PreferredAirlines": null,
+    "Segments": [
+    {
+    "Origin": "DEL",
+    "Destination": "BOM",
+    "FlightCabinClass": "1",
+    "PreferredDepartureTime": "2022-11-12T14: 00: 00",
+    "PreferredArrivalTime": "2022-11-12T14: 00: 00"
+    }
+            ],
+    "Sources": null
+    
+    }
+}   
