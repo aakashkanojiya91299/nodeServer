@@ -42,7 +42,7 @@ require("dotenv").config();
 var server = app.listen(process.env.PORT || 3000, listen);
 // This call back just tells us that the server has started
 
-
+//server status 
 async function listen() {
   var host = server.address().address;
   var port = server.address().port;
