@@ -9,10 +9,9 @@ const axios = require('axios');
 const schedule = require('node-schedule');
 const { get } = require('express/lib/request');
 // const fs = require('fs');
-var mongodb = require('mongodb');
+const {MongoClient} = require('mongodb');
 const winston = require('winston');
 var tty = require("tty");
-
 
 // Create the app
 var app = express();
@@ -425,19 +424,22 @@ async function Ticket_lcc(Ticket_lcc_data) {
     //logger.info("Ticket_lcc Response ",res.data);
     console.log("data add in json--->>>>>", res.data.Response.Response.PNR, res.data.Response.Response.BookingId);
     // save_PNR_booking_ID(res.data.Response.PNR,res.data.Response.BookingId);
-
+    console.log(res.data);
     if ((res.data.Response.Response.PNR) != null && (res.data.Response.Response.BookingId) != null) {
-      for (let i = 0; i < (res.data.Response.Response.Passenger).lenght;) {
-        console.log("----> Passenger lenght--->", i);
-        Ticket_info.push({ TicketId: res.Response.Response.Passenger[i].Ticket.TicketId, IssueDate: res.Response.Response.Passenger[i].Ticket.IssueDate })
+      console.log("inside",(res.data.Response.Response.FlightItinerary.Passenger).length);
+      for (let i = 0; i < (res.data.Response.Response.FlightItinerary.Passenger).length;i++) {
+        console.log("----> Passenger length--->", i);
+        Ticket_info.TicketId = (res.data.Response.Response.FlightItinerary.Passenger[i].Ticket.TicketId);
+        Ticket_info.IssueDate = (res.data.Response.Response.FlightItinerary.Passenger[i].Ticket.IssueDate);
       }
+      console.log(Ticket_info);
       mogo_pnr_info(res.data.Response.Response.PNR, res.data.Response.Response.BookingId, Ticket_info);
     }
     return (res.data);
   }
   catch (error) {
-    console.error("error while booking");
-    return (null);
+    console.error("error while booking",error);
+    return ("error while booking contact to customer support");
   }
 }
 //ticketing  no_lcc flight after booking hold 
@@ -507,7 +509,14 @@ async function cancel_hold_bookings(booking_details) {
 
 }
 async function cancel_ticketed(booking_details) {
+  var find = 0;
+  console.log("<-->",find);
   console.log(" cancellation data-->", booking_details);
+  var find = await mogo_find_req(booking_details.BookingId);
+  console.log("outside if-->",find);
+
+  if(find==1){
+    console.log("inside if -->",find);
   const api_url = 'http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/SendChangeRequest';
   try {
     const res = await axios.post(api_url, {
@@ -522,13 +531,18 @@ async function cancel_ticketed(booking_details) {
     })
 
     console.log("cancellation status", res.data);
-    mogo_cancellation_request(booking_details.BookingId, res.body.Response.TicketCRInfo[0].ChangeRequestId);
+    mogo_cancellation_request(booking_details.BookingId, res.data.Response.TicketCRInfo);
 
     return (res.data);
   }
   catch (error) {
-    console.error("error while fatching");
-    return (null);
+    console.error("error while fatching",error);
+    return ("null");
+  }
+  }
+  else{
+    console.log("Booking Derails no found");
+    return("Booking Derails no found")
   }
 }
 async function cancel_Cancellation_status(booking_details) {
@@ -552,47 +566,80 @@ async function cancel_Cancellation_status(booking_details) {
 
 //Database Working 
 async function mogo_pnr_info(pnr, booking_id, Ticket_info) {
-  var mongoClient = mongodb.MongoClient;
   var url = "mongodb://localhost:27017/";
-
-  mongoClient.connect(url, function (err, databases) {
-    if (err) {
-      throw err;
-    }
-    var nodetestDB = databases.db("flight_pnr_info"); //here  
-    var customersCollection = nodetestDB.collection("info_pnr_booking");
+  const client = new MongoClient(url);
+  try {
+    // Connect to the MongoDB cluster
+    await client.connect();
+    const Collection = client.db("flight_pnr_info").collection("info_pnr_booking");
     var customer = { PNR: pnr, Booking_ID: booking_id, Ticket_info };
 
-    customersCollection.insertOne(customer, function (error, response) {
-      if (error) {
-        throw error;
-      }
-
-      console.log("1 document inserted");
-      databases.close();
-    });
-  });
-}
-async function mogo_cancellation_request(booking_id) {
-  var mongoClient = mongodb.MongoClient;
-  var url = "mongodb://localhost:27017/";
-
-  mongoClient.connect(url, function (err, databases) {
-    if (err) {
-      throw err;
+    var results = await Collection.insertOne(customer);
     }
-    var nodetestDB = databases.db("flight_pnr_info"); //here  
-    var customersCollection = nodetestDB.collection("info_pnr_booking");
-    customersCollection.findOneAndUpdate({ BookingId: booking_id }, { $set: { Remarks: "cancellation_request" } }, function (error, response) {
-      if (error) {
-        throw error;
-      }
-
-      console.log("1 document inserted");
-      databases.close();
-    });
-  });
+    catch (e) {
+      console.error(e);
+  }
 }
+async function mogo_cancellation_request(booking_id,ticket_info) {
+  var url = "mongodb://localhost:27017/";
+ 
+  const client = new MongoClient(url);
+  try {
+    // Connect to the MongoDB cluster
+    await client.connect();
+
+    // Make the appropriate DB calls
+    const Collection = client.db("flight_pnr_info").collection("info_pnr_booking");
+
+    const results = await Collection.findOneAndUpdate({ Booking_ID: booking_id }, {$set: { Remarks: "cancellation_request",TicketCRInfo:ticket_info}})
+    
+  }
+  catch (e) {
+    console.error(e);
+}
+}
+async function mogo_find_req(booking_id){
+  //var mongoClient = mongodb.MongoClient;
+  var url = "mongodb://localhost:27017/"; 
+  const client = new MongoClient(url);
+  try {
+    // Connect to the MongoDB cluster
+    await client.connect();
+
+    // Make the appropriate DB calls
+    const Collection = client.db("flight_pnr_info").collection("info_pnr_booking");
+    const data = Collection.find({ Booking_ID: booking_id });
+    const results = await data.toArray();
+    console.log(results);
+    if(results.length > 0){
+      return(1);
+    }
+    else{
+      return(0);
+    }
+
+} catch (e) {
+    console.error(e);
+}
+}
+// async function mogo_update_status(){
+//   var url = "mongodb://localhost:27017/";
+ 
+//   const client = new MongoClient(url);
+//   try {
+//     // Connect to the MongoDB cluster
+//     await client.connect();
+
+//     // Make the appropriate DB calls
+//     const Collection = client.db("flight_pnr_info").collection("info_pnr_booking");
+
+//     const results = await Collection.findAndModify({query:{TicketCRInfo[0].ChangeRequestStatus},update:{}});
+    
+//   }
+//   catch (e) {
+//     console.error(e);
+// }
+// }
 
 //Ctrl+C handel
 process.on('SIGINT',async function () {
@@ -616,6 +663,7 @@ async function logout() {
 
     
     console.log("log out TokenId",process.env.TokenId);
+    process.exit(0);
   }
   catch (error) {
     console.error("Authenticate issue in side authenticate");
