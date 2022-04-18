@@ -9,7 +9,7 @@ const axios = require('axios');
 const schedule = require('node-schedule');
 const { get } = require('express/lib/request');
 // const fs = require('fs');
-const {MongoClient} = require('mongodb');
+const { MongoClient } = require('mongodb');
 const winston = require('winston');
 var tty = require("tty");
 
@@ -66,7 +66,7 @@ app.get('/api/TBO/cancel/hold_bookings', RELEASE_PNR_REQUEST);
 app.get('/api/TBO/cancel/Cancellation_status', Cancellation_status);
 
 // This is what happens when any user requests '/'
-const job = schedule.scheduleJob({ hour: 00, minute: 45 }, (async function () {
+const job = schedule.scheduleJob({ hour: 00, minute: 01 }, (async function () {
   try {
     console.log("New ID----> ");
     await (Authenticate());
@@ -134,7 +134,8 @@ async function getfare(req, res) {
   console.log(getfare_data);
   var get_FareRule = await get_FareRule_data(getfare_data);
   console.log(get_FareRule);
-  if (get_FareRule.Response.Error.ErrorCode == 0) {
+  try{
+  if (get_FareRule.Response.Error.ErrorCode == 0 ) {
     var get_FareQuote = await get_FareQuote_data(getfare_data);
     //console.log("get_FareQuote",get_FareQuote);
     res.send(get_FareQuote);
@@ -142,6 +143,12 @@ async function getfare(req, res) {
   else {
     res.send(get_FareRule);
   }
+}
+catch(error)
+{
+  console.error("contact to support");
+  res.send("contact to support");
+}
 }
 async function ssr_no_lcc(req, res) {
   console.log(req.body);
@@ -213,22 +220,22 @@ async function Authenticate() {
     })
 
     process.env['TokenId'] = res.data.TokenId;
-    process.env['TokenAgencyId'] =res.data.Member.AgencyId;
-    process.env['TokenMemberId'] =res.data.Member.MemberId;
+    process.env['TokenAgencyId'] = res.data.Member.AgencyId;
+    process.env['TokenMemberId'] = res.data.Member.MemberId;
     console.log(process.env.TokenId);
     return (process.env.TokenId);
   }
   catch (error) {
-    console.error("Authenticate issue in side authenticate",error);
-    try{
-      if(process.env.TokenId!=0 && process.env.TokenAgencyId!=0 && process.env.TokenMemberId !=0){
+    console.error("Authenticate issue in side authenticate", error);
+    try {
+      if (process.env.TokenId != 0 && process.env.TokenAgencyId != 0 && process.env.TokenMemberId != 0) {
         logout();
       }
     }
-    catch(error){
-
+    catch (error) {
+      console.error(error);
     }
-    return (null);
+    return (error);
   }
 }
 //Get data from TBO API
@@ -270,7 +277,7 @@ async function search_result(search_data) {
 
   } catch (error) {
     console.error("search problem time issue in side search result", error);
-    return (null);
+    return ("search problem time issue in side search result");
     // expected output: ReferenceError: nonExistentFunction is not defined
     // Note - error messages will vary depending on browser
   }
@@ -300,8 +307,8 @@ async function get_FareRule_data(booking_data) {
     return (res.data);
   }
   catch (error) {
-    console.error("FareRule error", error);
-    return (null);
+    console.error("FareRule error-->");
+    return ("FareRule error");
   }
 }
 //Get FARE from TBO API it contain both fare_rule + fareQuote
@@ -320,14 +327,14 @@ async function get_FareQuote_data(booking_data) {
     //   "TraceId": booking_data.TraceId,
     //   "ResultIndex": booking_data.ResultIndex
     // });
-    //console.log(res.data);
+      console.log("--> Fare Quote",res.data);
     // logger.info("FareQuote Response ",res.data);
     return (res.data);
 
   }
   catch (error) {
-    console.error("FareRule error", error);
-    return (null);
+    console.error("Fare Quote error", error);
+    return ("Fare Quote error");
   }
 }
 //Getting SSR req from TBO API from no_lcc
@@ -346,7 +353,7 @@ async function ssr_no_lcc_req(ssr_req_no_lcc) {
   }
   catch (error) {
     console.error("ssr error");
-    return (null);
+    return ("ssr error");
   }
 
 }
@@ -367,7 +374,7 @@ async function ssr_lcc_req(ssr_lcc_data) {
   }
   catch (error) {
     console.error("ssr error", error);
-    return (null);
+    return ("ssr error");
   }
 }
 //hold ticket for no lcc calling TBO API
@@ -386,12 +393,12 @@ async function Booking_no_lcc(no_lcc_booking) {
     console.log("pnr details", res.data);
     console.log("data add in json--->>>>>", res.data.Response.Response.PNR, res.data.Response.Response.BookingId);
     // save_PNR_booking_ID(res.data.Response.PNR,res.data.Response.BookingId);
-    mogo_pnr_info(res.data.Response.Response.PNR, res.data.Response.Response.BookingId);
+    mogo_pnr_info(res.data.Response.Response.PNR, res.data.Response.Response.BookingId,res.data.Response.Response.FlightItinerary);
     return (res.data);
   }
   catch (error) {
     console.error("error while booking");
-    return (null);
+    return ("error while booking");
   }
 
 }
@@ -426,19 +433,15 @@ async function Ticket_lcc(Ticket_lcc_data) {
     // save_PNR_booking_ID(res.data.Response.PNR,res.data.Response.BookingId);
     console.log(res.data);
     if ((res.data.Response.Response.PNR) != null && (res.data.Response.Response.BookingId) != null) {
-      console.log("inside",(res.data.Response.Response.FlightItinerary.Passenger).length);
-      for (let i = 0; i < (res.data.Response.Response.FlightItinerary.Passenger).length;i++) {
-        console.log("----> Passenger length--->", i);
-        Ticket_info.TicketId = (res.data.Response.Response.FlightItinerary.Passenger[i].Ticket.TicketId);
-        Ticket_info.IssueDate = (res.data.Response.Response.FlightItinerary.Passenger[i].Ticket.IssueDate);
-      }
+      console.log("inside", (res.data.Response.Response.FlightItinerary.Passenger).length);
+      Ticket_info.Passenger_info = res.data.Response.Response.FlightItinerary;
       console.log(Ticket_info);
       mogo_pnr_info(res.data.Response.Response.PNR, res.data.Response.Response.BookingId, Ticket_info);
     }
     return (res.data);
   }
   catch (error) {
-    console.error("error while booking",error);
+    console.error("error while booking", error);
     return ("error while booking contact to customer support");
   }
 }
@@ -456,11 +459,12 @@ async function Ticket_no_lcc(Ticket_no_lcc_data) {
     })
 
     console.log("pnr details", res.data);
+    await mogo_Ticket_Id_info(res.data.Response.Response.BookingId,res.data.Response.Response.FlightItinerary.Passenger);
     return (res.data);
   }
   catch (error) {
     console.error("error while booking");
-    return (null);
+    return ("error while booking");
   }
 
 }
@@ -481,7 +485,7 @@ async function get_booking_details(search_booking_details) {
   }
   catch (error) {
     console.error("error while fatching");
-    return (null);
+    return ("error while fatching");
   }
 }
 //Cancellation Part
@@ -502,7 +506,7 @@ async function cancel_Cancellation_Charges(booking_details) {
   }
   catch (error) {
     console.error("error while fatching");
-    return (null);
+    return ("error while fatching");
   }
 }
 async function cancel_hold_bookings(booking_details) {
@@ -510,56 +514,74 @@ async function cancel_hold_bookings(booking_details) {
 }
 async function cancel_ticketed(booking_details) {
   var find = 0;
-  console.log("<-->",find);
+  console.log("<-->", find);
   console.log(" cancellation data-->", booking_details);
   var find = await mogo_find_req(booking_details.BookingId);
-  console.log("outside if-->",find);
+  console.log("outside if-->", find);
 
-  if(find==1){
-    console.log("inside if -->",find);
-  const api_url = 'http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/SendChangeRequest';
-  try {
-    const res = await axios.post(api_url, {
-      "BookingId": booking_details.BookingId,
-      "RequestType": booking_details.RequestType,
-      "CancellationType": booking_details.CancellationType,
-      "Sectors": booking_details.Sectors,
-      "TicketId": booking_details.TicketId,
-      "Remarks": booking_details.Remarks,
-      "EndUserIp": "192.168.1.111",
-      "TokenId": process.env.TokenId
-    })
+  if (find == 1) {
+    console.log("inside if -->", find);
+    const api_url = 'http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/SendChangeRequest';
+    try {
+      const res = await axios.post(api_url, {
+        "BookingId": booking_details.BookingId,
+        "RequestType": booking_details.RequestType,
+        "CancellationType": booking_details.CancellationType,
+        "Sectors": booking_details.Sectors,
+        "TicketId": booking_details.TicketId,
+        "Remarks": booking_details.Remarks,
+        "EndUserIp": "192.168.1.111",
+        "TokenId": process.env.TokenId
+      })
 
-    console.log("cancellation status", res.data);
-    mogo_cancellation_request(booking_details.BookingId, res.data.Response.TicketCRInfo);
+      console.log("cancellation status", res.data);
+      mogo_cancellation_request(booking_details.BookingId, res.data.Response.TicketCRInfo);
 
-    return (res.data);
+      return (res.data);
+    }
+    catch (error) {
+      console.error("error while fatching", error);
+      return ("error while fatching");
+    }
   }
-  catch (error) {
-    console.error("error while fatching",error);
-    return ("null");
-  }
-  }
-  else{
+  else {
     console.log("Booking Derails no found");
-    return("Booking Derails no found")
+    return ("Booking Derails no found")
   }
 }
 async function cancel_Cancellation_status(booking_details) {
   console.log(" cancellation_status data-->", booking_details);
+  var full_details_cancellation = [];
   const api_url = 'http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/GetChangeRequestStatus';
-  try {
-    const res = await axios.post(api_url, {
+  if (await mogo_find_req(booking_details.BookingId) == 1) {
+    try {
+      const cancellation_data = await mongo_get_data(booking_details.BookingId);
+      console.log("cancellation_data from DB",cancellation_data);
+      if (cancellation_data != null && cancellation_data[0].TicketCRInfo != null) {
+        for (let i = 0; i < (cancellation_data[0].TicketCRInfo).length; i++) {
+          const res = await axios.post(api_url, {
 
-      "ChangeRequestId": booking_details.ChangeRequestId,
-      "EndUserIp": "192.168.1.111",
-      "TokenId": process.env.TokenId
-    })
-    console.log(res.data);
-    return (res.data);
-  } catch (error) {
-    console.error("error while fatching");
-    return (null);
+            "ChangeRequestId": cancellation_data[0].TicketCRInfo[i].ChangeRequestId,
+            "EndUserIp": "192.168.1.111",
+            "TokenId": process.env.TokenId
+          })
+          console.log("-->print data",i,res.data);
+          full_details_cancellation.push(res.data.Response);
+          console.log("details-->",full_details_cancellation);
+        }
+        if(full_details_cancellation.length != 0){await mongo_update_status(booking_details.BookingId,full_details_cancellation);}
+        return (full_details_cancellation);
+      }
+      else {
+        return ("Problem while fatching data");
+      }
+    } catch (error) {
+      console.error("error while fatching", error);
+      return ("error while fatching");
+    }
+  }
+  else {
+    return ("Data not found");
   }
 }
 
@@ -575,14 +597,14 @@ async function mogo_pnr_info(pnr, booking_id, Ticket_info) {
     var customer = { PNR: pnr, Booking_ID: booking_id, Ticket_info };
 
     var results = await Collection.insertOne(customer);
-    }
-    catch (e) {
-      console.error(e);
+  }
+  catch (e) {
+    console.error(e);
   }
 }
-async function mogo_cancellation_request(booking_id,ticket_info) {
+async function mogo_cancellation_request(booking_id, ticket_info) {
   var url = "mongodb://localhost:27017/";
- 
+
   const client = new MongoClient(url);
   try {
     // Connect to the MongoDB cluster
@@ -591,16 +613,16 @@ async function mogo_cancellation_request(booking_id,ticket_info) {
     // Make the appropriate DB calls
     const Collection = client.db("flight_pnr_info").collection("info_pnr_booking");
 
-    const results = await Collection.findOneAndUpdate({ Booking_ID: booking_id }, {$set: { Remarks: "cancellation_request",TicketCRInfo:ticket_info}})
-    
+    const results = await Collection.findOneAndUpdate({ Booking_ID: booking_id }, { $set: { Remarks: "cancellation_request", TicketCRInfo: ticket_info } })
+
   }
-  catch (e) {
-    console.error(e);
+  catch (error) {
+    console.error(error);
+  }
 }
-}
-async function mogo_find_req(booking_id){
+async function mogo_find_req(booking_id) {
   //var mongoClient = mongodb.MongoClient;
-  var url = "mongodb://localhost:27017/"; 
+  var url = "mongodb://localhost:27017/";
   const client = new MongoClient(url);
   try {
     // Connect to the MongoDB cluster
@@ -611,38 +633,96 @@ async function mogo_find_req(booking_id){
     const data = Collection.find({ Booking_ID: booking_id });
     const results = await data.toArray();
     console.log(results);
-    if(results.length > 0){
-      return(1);
+    if (results.length > 0) {
+      return (1);
     }
-    else{
-      return(0);
+    else {
+      return (0);
     }
 
-} catch (e) {
+  } catch (e) {
     console.error(e);
+  }
 }
+async function mongo_get_data(booking_id) {
+  //var mongoClient = mongodb.MongoClient;
+  var url = "mongodb://localhost:27017/";
+  const client = new MongoClient(url);
+  try {
+    // Connect to the MongoDB cluster
+    await client.connect();
+
+    // Make the appropriate DB calls
+    const Collection = client.db("flight_pnr_info").collection("info_pnr_booking");
+    const data = Collection.find({ Booking_ID: booking_id });
+    const results = await data.toArray();
+    console.log(results);
+    if (results.length > 0) {
+      console.log("get data result--->", results);
+      return (results);
+    }
+    else {
+      return (null);
+    }
+
+  } catch (e) {
+    console.error(e);
+  }
 }
-// async function mogo_update_status(){
+async function mongo_update_status(booking_id, ticket_info){
+  var url = "mongodb://localhost:27017/";
+
+  const client = new MongoClient(url);
+  try {
+    // Connect to the MongoDB cluster
+    await client.connect();
+
+    // Make the appropriate DB calls
+    const Collection = client.db("flight_pnr_info").collection("info_pnr_booking");
+
+    const results = await Collection.findOneAndUpdate({ Booking_ID: booking_id }, { $set: { Remarks: "cancellation_update", TicketCRInfo: ticket_info } })
+
+  }
+  catch (e) {
+    console.error(e);
+  }
+}
+async function mogo_Ticket_Id_info(booking_id, ticket_info) {
+  var url = "mongodb://localhost:27017/";
+
+  const client = new MongoClient(url);
+  try {
+    // Connect to the MongoDB cluster
+    await client.connect();
+
+    // Make the appropriate DB calls
+    const Collection = client.db("flight_pnr_info").collection("info_pnr_booking");
+
+    const results = await Collection.findOneAndUpdate({ Booking_ID: booking_id }, { $set: {Ticket_Id_info: ticket_info } })
+
+  }
+  catch (error) {
+    console.error(error);
+  }
+}
+
+// async function mogo_add_user(Passenger){
 //   var url = "mongodb://localhost:27017/";
- 
 //   const client = new MongoClient(url);
 //   try {
 //     // Connect to the MongoDB cluster
 //     await client.connect();
+//     const Collection = client.db("flight_pnr_info").collection("user_info");
+//     var customer = {};
 
-//     // Make the appropriate DB calls
-//     const Collection = client.db("flight_pnr_info").collection("info_pnr_booking");
-
-//     const results = await Collection.findAndModify({query:{TicketCRInfo[0].ChangeRequestStatus},update:{}});
-    
+//     var results = await Collection.insertOne(customer);
 //   }
 //   catch (e) {
 //     console.error(e);
+//   }
 // }
-// }
-
 //Ctrl+C handel
-process.on('SIGINT',async function () {
+process.on('SIGINT', async function () {
   console.log("\nGracefully shutting down from SIGINT (Ctrl-C)");
   await logout();
   console.log("bye");
@@ -652,22 +732,30 @@ process.on('SIGINT',async function () {
 
 //Log out
 async function logout() {
-  const api_url = 'http://api.tektravels.com/SharedServices/SharedData.svc/rest/Logout';  try {
-    const res = await axios.post(api_url, {
-      "ClientId": process.env.ClientId,
-      "TokenAgencyId": process.env.TokenAgencyId,
-      "TokenMemberId": process.env.TokenMemberId,
-      "EndUserIp": "192.168.1.111",
-      "TokenId":process.env.TokenId
-    })
+  if (process.env.TokenId != 0) {
+    const api_url = 'http://api.tektravels.com/SharedServices/SharedData.svc/rest/Logout';
+    try {
+      const res = await axios.post(api_url, {
+        "ClientId": process.env.ClientId,
+        "TokenAgencyId": process.env.TokenAgencyId,
+        "TokenMemberId": process.env.TokenMemberId,
+        "EndUserIp": "192.168.1.111",
+        "TokenId": process.env.TokenId
+      })
 
-    
-    console.log("log out TokenId",process.env.TokenId);
-    process.exit(0);
+
+      console.log("log out TokenId", process.env.TokenId);
+      process.exit(0);
+    }
+    catch (error) {
+      console.error("Authenticate issue while log out", error);
+    }
+    process.env['TokenId'] = 0;
+    console.log(process.env.TokenId);
   }
-  catch (error) {
-    console.error("Authenticate issue in side authenticate");
+  else {
+    console.log("Create a Token Id First");
   }
-  process.env['TokenId'] = 0;
-  console.log(process.env.TokenId);
 }
+
+
