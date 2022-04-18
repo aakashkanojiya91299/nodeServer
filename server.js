@@ -706,21 +706,21 @@ async function mogo_Ticket_Id_info(booking_id, ticket_info) {
   }
 }
 
-// async function mogo_add_user(Passenger){
-//   var url = "mongodb://localhost:27017/";
-//   const client = new MongoClient(url);
-//   try {
-//     // Connect to the MongoDB cluster
-//     await client.connect();
-//     const Collection = client.db("flight_pnr_info").collection("user_info");
-//     var customer = {};
+async function mogo_add_user(Passenger){
+  var url = "mongodb://localhost:27017/";
+  const client = new MongoClient(url);
+  try {
+    // Connect to the MongoDB cluster
+    await client.connect();
+    const Collection = client.db("flight_pnr_info").collection("user_info");
+    var customer = {UserName:"",Mobile_no:"",Password:"",};
 
-//     var results = await Collection.insertOne(customer);
-//   }
-//   catch (e) {
-//     console.error(e);
-//   }
-// }
+    var results = await Collection.insertOne(customer);
+  }
+  catch (e) {
+    console.error(e);
+  }
+}
 //Ctrl+C handel
 process.on('SIGINT', async function () {
   console.log("\nGracefully shutting down from SIGINT (Ctrl-C)");
