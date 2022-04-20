@@ -3,7 +3,6 @@
 // Using express: http://expressjs.com/
 var express = require('express');
 var cors = require('cors');
-
 //const { request } = require('express');
 //var requestIp = require('request-ip');
 const schedule = require('node-schedule');
@@ -13,6 +12,7 @@ const { get } = require('express/lib/request');
 const winston = require('winston');
 var tty = require("tty");
 const WF = require("./Route/Working_function.js")
+
 
 // Create the app
 var app = express();
@@ -55,6 +55,7 @@ async function listen() {
 app.post('/api/TBO/search', search);
 app.get('/api/TBO/get_FareRule', get_FareRule);
 app.get('/api/TBO/getfare', getfare);
+app.get('/api/TBO/get_FareQuote', get_FareQuote);
 app.get('/api/TBO/ssr_no_lcc', ssr_no_lcc);
 app.get('/api/TBO/ssr_lcc', ssr_lcc);
 app.get('/api/TBO/booknow_no_lcc', booknow_no_lcc);
@@ -128,6 +129,12 @@ async function get_FareRule(req, res) {
   getfare_data = req.body;
   var get_FareRule = await WF.get_FareRule(getfare_data);
   res.send(get_FareRule);
+}
+async function get_FareQuote(req, res) {
+  getfare_data = req.body;
+  console.log(getfare_data);
+  var get_FareQuote = await WF.get_FareQuote(getfare_data);
+  res.send(get_FareQuote);
 }
 async function getfare(req, res) {
   //console.log(req.body);

@@ -1,4 +1,5 @@
 const axios = require('axios');
+const { Db } = require('mongodb');
 const DBA = require('../Database/DB.js')
 //authenticate 
 async function Authenticate() {
@@ -231,7 +232,9 @@ async function Authenticate() {
         Ticket_info.Passenger_info = res.data.Response.Response.FlightItinerary;
         console.log(Ticket_info);
         DBA.pnr_info(res.data.Response.Response.PNR, res.data.Response.Response.BookingId, Ticket_info);
+        
       }
+
       return (res.data);
     }
     catch (error) {
@@ -304,7 +307,41 @@ async function Authenticate() {
     }
   }
   async function cancel_hold_bookings(booking_details) {
+    console.log(" cancel hold PNR-->", booking_details);
+    var find = 0;
+    console.log("<-->", find);
+    console.log(" cancellation data-->", booking_details);
+    var find = await DBA.find_req(booking_details.BookingId);
+    console.log("outside if-->", find);
   
+    if (find == 1) {
+      console.log("inside if -->", find);
+      const Source_data = await DBA.get_data(booking_details.BookingId);
+      console.log(Source_data);
+      const api_url = 'http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/ReleasePNRRequest';
+      try {
+        const res = await axios.post(api_url, {
+          "BookingId": booking_details.BookingId,
+          "Source": Source_data[0].Ticket_info.Source,
+          "EndUserIp": "192.168.1.111",
+          "TokenId": process.env.TokenId
+        })
+  
+        console.log("cancellation status", res.data);
+        await DBA.Release_PNR(booking_details.BookingId, res.data.Response.ResponseStatus);
+  
+        return (res.data);
+      }
+      catch (error) {
+        console.error("error while fatching", error);
+        return ("error while fatching");
+      }
+    }
+    else {
+      console.log("Booking Derails no found");
+      return ("Booking Derails no found")
+    }
+
   }
   async function cancel_ticketed(booking_details) {
     var find = 0;
