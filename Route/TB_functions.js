@@ -174,6 +174,7 @@ async function Authenticate() {
   }
   //hold ticket for no lcc calling TBO API
   async function Booking_no_lcc(no_lcc_booking) {
+    var Ticket_info = {};
     console.log(no_lcc_booking);
     const api_url = 'http://api.tektravels.com/BookingEngineService_Air/AirService.svc/rest/Book';
     try {
@@ -188,8 +189,18 @@ async function Authenticate() {
       console.log("pnr details", res.data);
       console.log("data add in json--->>>>>", res.data.Response.Response.PNR, res.data.Response.Response.BookingId);
       // save_PNR_booking_ID(res.data.Response.PNR,res.data.Response.BookingId);
-      DBA.pnr_info(res.data.Response.Response.PNR, res.data.Response.Response.BookingId,res.data.Response.Response.FlightItinerary);
+     if(res.data.Response.Response.IsPriceChanged == false && res.data.Response.Response.IsTimeChanged == false){
+      Ticket_info.Passenger_info = res.data.Response.Response.FlightItinerary;
+          console.log(Ticket_info);
+      DBA.pnr_info(res.data.Response.Response.PNR, res.data.Response.Response.BookingId,Ticket_info);
       return (res.data);
+    }
+    else{
+      var IsPriceChanged_data ={"ResultIndex": Ticket_lcc_data.ResultIndex,"TraceId": Ticket_lcc_data.TraceId}
+      var updated_price = await get_FareQuote_data(IsPriceChanged_data);
+      updated_price["IsPriceChanged"] = true;
+      return(updated_price);
+    }
     }
     catch (error) {
       console.error("error while booking");
@@ -210,7 +221,9 @@ async function Authenticate() {
         "Passengers": Ticket_lcc_data.Passengers,
         "EndUserIp": "192.168.1.111",
         "TokenId": process.env.TokenId,
-        "TraceId": Ticket_lcc_data.TraceId
+        "TraceId": Ticket_lcc_data.TraceId,
+        "IsPriceChangeAccepted": Ticket_lcc_data.IsPriceChangeAccepted
+
       })
       // logger.info("Ticket_lcc Request ",{
       //   "PreferredCurrency": Ticket_lcc_data.PreferredCurrency,
@@ -227,15 +240,29 @@ async function Authenticate() {
       console.log("data add in json--->>>>>", res.data.Response.Response.PNR, res.data.Response.Response.BookingId);
       // save_PNR_booking_ID(res.data.Response.PNR,res.data.Response.BookingId);
       console.log(res.data);
-      if ((res.data.Response.Response.PNR) != null && (res.data.Response.Response.BookingId) != null) {
-        console.log("inside", (res.data.Response.Response.FlightItinerary.Passenger).length);
-        Ticket_info.Passenger_info = res.data.Response.Response.FlightItinerary;
-        console.log(Ticket_info);
-        DBA.pnr_info(res.data.Response.Response.PNR, res.data.Response.Response.BookingId, Ticket_info);
-        
+      if (res.data.Response.Response.IsPriceChanged == false && res.data.Response.Response.IsTimeChanged == false) {
+        if ((res.data.Response.Response.PNR) != null && (res.data.Response.Response.BookingId) != null) {
+          console.log("inside", (res.data.Response.Response.FlightItinerary.Passenger).length);
+          Ticket_info.Passenger_info = res.data.Response.Response.FlightItinerary;
+          console.log(Ticket_info);
+          DBA.pnr_info(res.data.Response.Response.PNR, res.data.Response.Response.BookingId, Ticket_info);
+          var Passenger = {};
+          Passenger["Email"] = res.data.Response.Response.FlightItinerary.Passenger[0].Email;
+          Passenger["Mobile_no"] = res.data.Response.Response.FlightItinerary.Passenger[0].ContactNo;
+          await DBA.add_user(Passenger);
+          return (res.data);
+        }
+        else {
+          return (res.data);
+        }
       }
-
-      return (res.data);
+      else{
+        var IsPriceChanged_data ={"ResultIndex": Ticket_lcc_data.ResultIndex,"TraceId": Ticket_lcc_data.TraceId}
+        var updated_price = await get_FareQuote_data(IsPriceChanged_data);
+        updated_price["IsPriceChanged"] = true;
+        return(updated_price);
+      }
+      
     }
     catch (error) {
       console.error("error while booking", error);
@@ -252,11 +279,16 @@ async function Authenticate() {
         "TokenId": process.env.TokenId,
         "TraceId": Ticket_no_lcc_data.TraceId,
         "PNR": Ticket_no_lcc_data.PNR,
-        "BookingId": Ticket_no_lcc_data.BookingId
+        "BookingId": Ticket_no_lcc_data.BookingId,
+        "IsPriceChangeAccepted": Ticket_lcc_data.IsPriceChangeAccepted
+        
       })
-  
       console.log("pnr details", res.data);
       await DBA.Ticket_Id_info(res.data.Response.Response.BookingId,res.data.Response.Response.FlightItinerary.Passenger);
+      var Passenger = {};
+      Passenger["Email"] = res.data.Response.Response.FlightItinerary.Passenger[0].Email;
+      Passenger["Mobile_no"] = res.data.Response.Response.FlightItinerary.Passenger[0].ContactNo;
+      await DBA.add_user(Passenger);
       return (res.data);
     }
     catch (error) {

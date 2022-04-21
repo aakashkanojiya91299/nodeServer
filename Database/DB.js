@@ -171,9 +171,9 @@ async function mogo_pnr_info(pnr, booking_id, Ticket_info) {
         console.log("user exists");
       }
       else{
-        var passdata = GN_Password();
+        var passdata = await GN_Password();
         console.log("Ready to send password-->",passdata);
-        var customer = {UserName:Passenger.Email,Mobile_no:Passenger.Email.ContactNo,Password:passdata};
+        var customer = {UserName:Passenger.Email,Mobile_no:Passenger.Mobile_no,Password:passdata};
         var results = await Collection.insertOne(customer);
       }
     }
