@@ -11,7 +11,8 @@ const { get } = require('express/lib/request');
 
 const winston = require('winston');
 var tty = require("tty");
-const WF = require("./Route/TB_functions.js")
+const TBO = require("./Route/TB_functions.js");
+const TJ = require("./Route/TJ_functions.js");
 
 
 // Create the app
@@ -48,7 +49,7 @@ async function listen() {
   var host = server.address().address;
   var port = server.address().port;
   console.log('Example app listening at http://' + host + ':' + port);
-  await WF.login();
+  await TBO.login();
 }
 
 // Set the route for the root directory
@@ -66,12 +67,16 @@ app.get('/api/TBO/cancel/Cancellation_Charges', Cancellation_Charges);
 app.get('/api/TBO/cancel/ticketed', SEND_CHANGE_REQUEST);
 app.get('/api/TBO/cancel/hold_bookings', RELEASE_PNR_REQUEST);
 app.get('/api/TBO/cancel/Cancellation_status', Cancellation_status);
+app.post('/api/TJ/search',search_tj);
+app.get('/api/TJ/review',review_tj);
+app.get('/api/TJ/get_FareRule',TJ_FareRule_search);
+//app.get('/api/TJ/Fare_Rule',Fare_Rule_tj)
 
 // This is what happens when any user requests '/'
 const job = schedule.scheduleJob({ hour: 00, minute: 01 }, (async function () {
   try {
     console.log("New ID----> ");
-    await (WF.login());
+    await (TBO.login());
   }
   catch (err) {
     console.log(err);
@@ -80,71 +85,71 @@ const job = schedule.scheduleJob({ hour: 00, minute: 01 }, (async function () {
 async function getTicket(req, res) {
   console.log(req.body);
   search_booking_details = req.body;
-  getTicket_data = await WF.get_booking_info(search_booking_details);
+  getTicket_data = await TBO.get_booking_info(search_booking_details);
   res.send(getTicket_data);
 
 }
 async function Cancellation_status(req, res) {
   console.log(req.body);
-  var get_details_info_of_cancellation = await WF.cancel_Cancellation_status(req.body);
+  var get_details_info_of_cancellation = await TBO.cancel_Cancellation_status(req.body);
   res.send(get_details_info_of_cancellation);
 }
 async function Cancellation_Charges(req, res) {
   console.log(req.body);
-  var get_details_info_of_cancellation = await WF.cancel_Cancellation_Charges(req.body);
+  var get_details_info_of_cancellation = await TBO.cancel_Cancellation_Charges(req.body);
   res.send(get_details_info_of_cancellation);
 }
 async function RELEASE_PNR_REQUEST(req, res) {
   console.log(req.body);
-  var get_details_info_of_cancellation = await WF.cancel_hold_bookings(req.body);
+  var get_details_info_of_cancellation = await TBO.cancel_hold_bookings(req.body);
   res.send(get_details_info_of_cancellation);
 }
 async function SEND_CHANGE_REQUEST(req, res) {
   console.log(req.body);
-  var get_details_info_of_cancellation = await WF.cancel_ticketed(req.body);
+  var get_details_info_of_cancellation = await TBO.cancel_ticketed(req.body);
   res.send(get_details_info_of_cancellation);
 
 }
 async function Ticketing_no_lcc(req, res) {
   booking_info = req.body;
-  var Ticket_details = await WF.Ticket_nolcc(booking_info);
+  var Ticket_details = await TBO.Ticket_nolcc(booking_info);
   res.send(Ticket_details);
 
 }
 async function booknow_no_lcc(req, res) {
   booking_info = req.body;
-  var booking_details = await WF.Booking_nolcc(booking_info);
+  var booking_details = await TBO.Booking_nolcc(booking_info);
   res.send(booking_details);
 
 }
 async function booknow_lcc(req, res) {
   console.log("booking_lcc---->\n", req.body);
   Ticket_details = req.body;
-  var Ticket_details_info = await WF.Ticket_lcc(Ticket_details);
+  var Ticket_details_info = await TBO.Ticket_lcc(Ticket_details);
   console.log("send-data", Ticket_details_info);
   res.send(Ticket_details_info);
 
 }
 async function get_FareRule(req, res) {
   getfare_data = req.body;
-  var get_FareRule = await WF.get_FareRule(getfare_data);
+  var get_FareRule = await TBO.get_FareRule(getfare_data);
   res.send(get_FareRule);
 }
 async function get_FareQuote(req, res) {
   getfare_data = req.body;
   console.log(getfare_data);
-  var get_FareQuote = await WF.get_FareQuote(getfare_data);
+  var get_FareQuote = await TBO.get_FareQuote(getfare_data);
   res.send(get_FareQuote);
 }
 async function getfare(req, res) {
   //console.log(req.body);
   getfare_data = req.body;
   console.log(getfare_data);
-  var get_FareRule = await WF.get_FareRule(getfare_data);
+  var get_FareRule = await TBO.get_FareRule(getfare_data);
   console.log(get_FareRule);
   try{
   if (get_FareRule.Response.Error.ErrorCode == 0 ) {
-    var get_FareQuote = await WF.get_FareQuote(getfare_data);
+    var get_FareQuote = await TBO.get_FareQuote(getfare_data);
     //console.log("get_FareQuote",get_FareQuote);
     res.send(get_FareQuote);
   }
@@ -162,7 +167,7 @@ async function ssr_no_lcc(req, res) {
   console.log(req.body);
   ssr_no_lcc_data = req.body;
   //console.log();
-  var ssr_no_lcc = await WF.ssr_nolcc_req(ssr_no_lcc_data);
+  var ssr_no_lcc = await TBO.ssr_nolcc_req(ssr_no_lcc_data);
   res.send(ssr_no_lcc);
 
 }
@@ -171,7 +176,7 @@ async function ssr_lcc(req, res) {
   //console.log("<------ssr_lcc----->");
   ssr_lcc_data = req.body;
   //console.log();
-  var ssr_lcc = await WF.ssr_lcc_req(ssr_lcc_data);
+  var ssr_lcc = await TBO.ssr_lcc_req(ssr_lcc_data);
   res.send(ssr_lcc);
 
 }
@@ -185,7 +190,7 @@ async function search(req, res) {
   //Token creation 
   try {
     if (process.env.TokenId == 0) {
-      id = await WF.login();
+      id = await TBO.login();
 
       // console.log("after authenticate--->", id, typeof (id));
     }
@@ -193,7 +198,7 @@ async function search(req, res) {
 
     //id = ;
     if (process.env.TokenId != null) {
-      search_req = await WF.search(search_data);
+      search_req = await TBO.search(search_data);
       if (search_req != null) {
 
         res.send(search_req);
@@ -220,11 +225,32 @@ async function search(req, res) {
 //Ctrl+C handel
 process.on('SIGINT', async function () {
   console.log("\nGracefully shutting down from SIGINT (Ctrl-C)");
-  await WF.logout();
+  await TBO.logout();
   console.log("bye");
   // some other closing procedures go here
   process.exit(0);
 });
+// working on tripjack API
+async function search_tj(req,res){
+  console.log("search data-->",req.body);
+  search_data = req.body;
+  result_data = await TJ.search(search_data);
+  console.log("respond-->",result_data);
+  res.send(result_data);
+}
+async function review_tj(req,res){
+  console.log("Review__Data --> ",req.body);
+  review_data = req.body;
+  result_data = await TJ.getPrice(review_data);
+  console.log("respond---->",result_data);
+  res.send(result_data);
+}
 
-
+async function TJ_FareRule_search(req,res){
+  console.log("Review__Data --> ",req.body);
+  Fare_rule_data = req.body;
+  result_data = await TJ.FareRule_search(Fare_rule_data);
+  console.log("respond---->",result_data);
+  res.send(result_data);
+}
 

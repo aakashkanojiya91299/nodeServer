@@ -1,5 +1,4 @@
 const axios = require('axios');
-const { Db } = require('mongodb');
 const DBA = require('../Database/DB.js')
 //authenticate 
 async function Authenticate() {
@@ -48,9 +47,9 @@ async function Authenticate() {
         "DirectFlight": "false",
         "OneStopFlight": "false",
         "JourneyType": search_data.JourneyType,
-        "PreferredAirlines": null,
+        "PreferredAirlines": search_data.PreferredAirlines,
         "Segments": search_data.Segments,
-        "Sources": null
+        "Sources": search_data.Source
       })
       // logger.info("Search Request body",{
       //   "EndUserIp": "192.168.1.111",
