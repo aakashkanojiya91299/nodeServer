@@ -13,6 +13,7 @@ const winston = require('winston');
 var tty = require("tty");
 const TBO = require("./Route/TB_functions.js");
 const TJ = require("./Route/TJ_functions.js");
+const TVP = require("./Route/TVP_functions");
 
 
 // Create the app
@@ -53,24 +54,45 @@ async function listen() {
 }
 
 // Set the route for the root directory
-app.post('/api/TBO/search', search);
-app.get('/api/TBO/get_FareRule', get_FareRule);
-app.get('/api/TBO/getfare', getfare);
-app.get('/api/TBO/get_FareQuote', get_FareQuote);
-app.get('/api/TBO/ssr_no_lcc', ssr_no_lcc);
-app.get('/api/TBO/ssr_lcc', ssr_lcc);
-app.get('/api/TBO/booknow_no_lcc', booknow_no_lcc);
-app.get('/api/TBO/ticket_no_lcc', Ticketing_no_lcc);
-app.get('/api/TBO/booknow_lcc', booknow_lcc);
-app.get('/api/TBO/getTicket', getTicket);
-app.get('/api/TBO/cancel/Cancellation_Charges', Cancellation_Charges);
-app.get('/api/TBO/cancel/ticketed', SEND_CHANGE_REQUEST);
-app.get('/api/TBO/cancel/hold_bookings', RELEASE_PNR_REQUEST);
-app.get('/api/TBO/cancel/Cancellation_status', Cancellation_status);
-app.post('/api/TJ/search',search_tj);
-app.get('/api/TJ/review',review_tj);
-app.get('/api/TJ/get_FareRule',TJ_FareRule_search);
-//app.get('/api/TJ/Fare_Rule',Fare_Rule_tj)
+//TBO
+    app.post('/api/TBO/search', search);
+    app.get('/api/TBO/get_FareRule', get_FareRule);
+    app.get('/api/TBO/getfare', getfare);
+    app.get('/api/TBO/get_FareQuote', get_FareQuote);
+    app.get('/api/TBO/ssr_no_lcc', ssr_no_lcc);
+    app.get('/api/TBO/ssr_lcc', ssr_lcc);
+    app.get('/api/TBO/booknow_no_lcc', booknow_no_lcc);
+    app.get('/api/TBO/ticket_no_lcc', Ticketing_no_lcc);
+    app.get('/api/TBO/booknow_lcc', booknow_lcc);
+    app.get('/api/TBO/getTicket', getTicket);
+    app.get('/api/TBO/cancel/Cancellation_Charges', Cancellation_Charges);
+    app.get('/api/TBO/cancel/ticketed', SEND_CHANGE_REQUEST);
+    app.get('/api/TBO/cancel/hold_bookings', RELEASE_PNR_REQUEST);
+    app.get('/api/TBO/cancel/Cancellation_status', Cancellation_status);
+
+//TRIPJACK 
+    app.post('/api/TJ/search',search_tj);
+    app.get('/api/TJ/review',review_tj);
+    app.get('/api/TJ/get_FareRule',TJ_FareRule_search);
+    app.get('/api/TJ/Booking_Instant_Ticket',Booking_Instant_Ticket);
+    app.get('/api/TJ/Booking_Hold',Booking_Hold);
+    app.get('/api/TJ/Confirm_Fare_Before_Ticket',Confirm_Fare_Before_Ticket);
+    app.get('/api/TJ/Book_Service_Confirm_Hold_Book',Book_Service_Confirm_Hold_Book);
+    app.get('/api/TJ/Booking_Details',Booking_Details);
+    app.get('/api/TJ/Seat_Service',Seat_Service);
+    app.get('/api/TJ/Get_Amendment_Charges',Get_Amendment_Charges);
+    app.get('/api/TJ/Submit_Amendment',Submit_Amendment);
+    app.get('/api/TJ/Amendment_Details',Amendment_Details);
+    app.get('/api/TJ/Release_PNR_Hold',Release_PNR_Hold);
+
+//TRAVELPORT
+    app.post('/api/TVP/search');
+    app.get('/api/TVP/');
+    app.get('/api/TVP/');
+    app.get('/api/TVP/');
+
+
+
 
 // This is what happens when any user requests '/'
 const job = schedule.scheduleJob({ hour: 00, minute: 01 }, (async function () {
@@ -222,14 +244,6 @@ async function search(req, res) {
 
 
 
-//Ctrl+C handel
-process.on('SIGINT', async function () {
-  console.log("\nGracefully shutting down from SIGINT (Ctrl-C)");
-  await TBO.logout();
-  console.log("bye");
-  // some other closing procedures go here
-  process.exit(0);
-});
 // working on tripjack API
 async function search_tj(req,res){
   console.log("search data-->",req.body);
@@ -253,4 +267,29 @@ async function TJ_FareRule_search(req,res){
   console.log("respond---->",result_data);
   res.send(result_data);
 }
+async function Booking_Instant_Ticket(req,res){
+  console.log(req.body);
+  result_data = await TJ.BIT(req.body);
+  res.send(result_data);
+
+}
+async function Booking_Hold(req,res){}
+async function Confirm_Fare_Before_Ticket(req,res){}
+async function Book_Service_Confirm_Hold_Book(req,res){}
+async function Booking_Details(req,res){}
+async function Seat_Service(req,res){}
+async function Get_Amendment_Charges(req,res){}
+async function Submit_Amendment(req,res){}
+async function Amendment_Details(req,res){}
+async function Release_PNR_Hold(req,res){}     
+
+//Ctrl+C handel
+process.on('SIGINT', async function () {
+  console.log("\nGracefully shutting down from SIGINT (Ctrl-C)");
+  await TBO.logout();
+  console.log("bye");
+  // some other closing procedures go here
+  process.exit(0);
+});
+
 
