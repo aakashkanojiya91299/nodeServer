@@ -1,0 +1,31 @@
+{
+    "bookingId": "TJS106600241574",
+    "deliveryInfo": {
+        "contacts": [
+            "+919538511321"
+        ],
+        "emails": [
+            "prabhu@technogramsolutions.com"
+        ]
+    },
+    "gstInfo": {
+        "address": "",
+        "email": "",
+        "gstNumber": "",
+        "mobile": "",
+        "registeredName": ""
+    },
+    "paymentInfos": [
+        {
+            "amount": 8930.7
+        }
+    ],
+    "travellerInfo": [
+        {
+            "fN": "Testwow",
+            "lN": "AdultA",
+            "pt": "ADULT",
+            "ti": "Mr"
+        }
+    ]
+}

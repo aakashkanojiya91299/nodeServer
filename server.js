@@ -276,7 +276,11 @@ async function Booking_Instant_Ticket(req,res){
 async function Booking_Hold(req,res){}
 async function Confirm_Fare_Before_Ticket(req,res){}
 async function Book_Service_Confirm_Hold_Book(req,res){}
-async function Booking_Details(req,res){}
+async function Booking_Details(req,res){
+  console.log(req.body);
+  result_data = await TJ.BD(req.body);
+  res.send(result_data);
+}
 async function Seat_Service(req,res){}
 async function Get_Amendment_Charges(req,res){}
 async function Submit_Amendment(req,res){}

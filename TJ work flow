@@ -1,0 +1,9 @@
+---------------------------------------------------------------
+-----------search
+                *---Fare Rule---Optional
+    -------|---Review
+        ---^----Fare Rule------*-----Optional
+                |---Hold--Booking--| ------------>yes-------
+========================No
+                        |
+                        Block-----Booking Details----Hold Booking--condition-check ---- confirm fare Before --- 

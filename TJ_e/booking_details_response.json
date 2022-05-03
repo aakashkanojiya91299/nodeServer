@@ -1,0 +1,101 @@
+{
+    "gstInfo": {},
+    "itemInfos": {
+        "AIR": {
+            "totalPriceInfo": {
+                "totalFareDetail": {
+                    "afC": {
+                        "TAF": {
+                            "AGST": 404,
+                            "MF": 15,
+                            "MFT": 2.7,
+                            "OT": 509,
+                            "YQ": 0
+                        }
+                    },
+                    "fC": {
+                        "BF": 8000,
+                        "CGST": 1.35,
+                        "NF": 8930.7,
+                        "SGST": 1.35,
+                        "TAF": 930.7,
+                        "TF": 8930.7
+                    }
+                }
+            },
+            "travellerInfos": [
+                {
+                    "fN": "Testwow",
+                    "lN": "AdultA",
+                    "pnrDetails": {
+                        "BOM-DEL": "Z76U8M"
+                    },
+                    "pt": "ADULT",
+                    "ti": "Mr"
+                }
+            ],
+            "tripInfos": [
+                {
+                    "sI": [
+                        {
+                            "aa": {
+                                "city": "Delhi",
+                                "cityCode": "DEL",
+                                "code": "DEL",
+                                "country": "India",
+                                "countryCode": "IN",
+                                "name": "Delhi Indira Gandhi Intl",
+                                "terminal": "Terminal 2"
+                            },
+                            "at": "2022-05-15T08:05",
+                            "da": {
+                                "city": "Mumbai",
+                                "cityCode": "BOM",
+                                "code": "BOM",
+                                "country": "India",
+                                "countryCode": "IN",
+                                "name": "Chhatrapati Shivaji",
+                                "terminal": "Terminal 1"
+                            },
+                            "dt": "2022-05-15T06:00",
+                            "duration": 125,
+                            "fD": {
+                                "aI": {
+                                    "code": "G8",
+                                    "isLcc": true,
+                                    "name": "Go First"
+                                },
+                                "eT": "32N",
+                                "fN": "329"
+                            },
+                            "iand": false,
+                            "id": "63421",
+                            "isRs": false,
+                            "sN": 0,
+                            "stops": 0
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "order": {
+        "amount": 8930.7,
+        "bookingId": "TJS106600241574",
+        "createdOn": "2022-05-03T15:06:50.965",
+        "deliveryInfo": {
+            "contacts": [
+                "+919538511321"
+            ],
+            "emails": [
+                "prabhu@technogramsolutions.com"
+            ]
+        },
+        "markup": 0,
+        "status": "SUCCESS"
+    },
+    "status": {
+        "httpStatus": 200,
+        "success": true
+    }
+}

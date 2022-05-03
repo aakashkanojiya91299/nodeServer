@@ -1,0 +1,26 @@
+{
+    "searchQuery": {
+        "cabinClass": "ECONOMY",
+        "paxInfo": {
+            "ADULT": "1",
+            "CHILD": "0",
+            "INFANT": "0"
+        },
+        "preferredAirline": [],
+        "routeInfos": [
+            {
+                "fromCityOrAirport": {
+                    "code": "BOM"
+                },
+                "toCityOrAirport": {
+                    "code": "DEL"
+                },
+                "travelDate": "2022-05-15"
+            }
+        ],
+        "searchModifiers": {
+            "isConnectingFlight": false,
+            "isDirectFlight": false
+        }
+    }
+}

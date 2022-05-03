@@ -1,0 +1,229 @@
+{
+    "bookingId": "TJS106600241574",
+    "conditions": {
+        "dc": {
+            "ida": false,
+            "idm": false
+        },
+        "dob": {
+            "adobr": false,
+            "cdobr": false,
+            "idobr": true
+        },
+        "ffas": [],
+        "gst": {
+            "gstappl": true,
+            "igm": false
+        },
+        "iecr": false,
+        "isBA": true,
+        "isa": true,
+        "sct": "2022-05-03T15:06:34.044",
+        "st": 900
+    },
+    "searchQuery": {
+        "cabinClass": "ECONOMY",
+        "isDomestic": true,
+        "paxInfo": {
+            "ADULT": 1,
+            "CHILD": 0,
+            "INFANT": 0
+        },
+        "preferredAirline": [],
+        "routeInfos": [
+            {
+                "fromCityOrAirport": {
+                    "city": "Mumbai",
+                    "cityCode": "BOM",
+                    "code": "BOM",
+                    "country": "India",
+                    "countryCode": "IN",
+                    "name": "Chhatrapati Shivaji"
+                },
+                "toCityOrAirport": {
+                    "city": "Delhi",
+                    "cityCode": "DEL",
+                    "code": "DEL",
+                    "country": "India",
+                    "countryCode": "IN",
+                    "name": "Delhi Indira Gandhi Intl"
+                },
+                "travelDate": "2022-05-15"
+            }
+        ],
+        "searchModifiers": {
+            "isConnectingFlight": false,
+            "isDirectFlight": false,
+            "pft": "REGULAR"
+        },
+        "searchType": "ONEWAY"
+    },
+    "status": {
+        "httpStatus": 200,
+        "success": true
+    },
+    "totalPriceInfo": {
+        "totalFareDetail": {
+            "afC": {
+                "TAF": {
+                    "AGST": 404,
+                    "MF": 15,
+                    "MFT": 2.7,
+                    "OT": 509,
+                    "YQ": 0
+                }
+            },
+            "fC": {
+                "BF": 8000,
+                "NF": 8930.7,
+                "TAF": 930.7,
+                "TF": 8930.7
+            }
+        }
+    },
+    "tripInfos": [
+        {
+            "sI": [
+                {
+                    "aa": {
+                        "city": "Delhi",
+                        "cityCode": "DEL",
+                        "code": "DEL",
+                        "country": "India",
+                        "countryCode": "IN",
+                        "name": "Delhi Indira Gandhi Intl",
+                        "terminal": "Terminal 2"
+                    },
+                    "at": "2022-05-15T08:05",
+                    "da": {
+                        "city": "Mumbai",
+                        "cityCode": "BOM",
+                        "code": "BOM",
+                        "country": "India",
+                        "countryCode": "IN",
+                        "name": "Chhatrapati Shivaji",
+                        "terminal": "Terminal 1"
+                    },
+                    "dt": "2022-05-15T06:00",
+                    "duration": 125,
+                    "fD": {
+                        "aI": {
+                            "code": "G8",
+                            "isLcc": true,
+                            "name": "Go First"
+                        },
+                        "eT": "32N",
+                        "fN": "329"
+                    },
+                    "iand": false,
+                    "id": "787",
+                    "isRs": false,
+                    "sN": 0,
+                    "so": [],
+                    "ssrInfo": {
+                        "BAGGAGE": [
+                            {
+                                "amount": 2250,
+                                "code": "XC05",
+                                "desc": "5KG"
+                            },
+                            {
+                                "amount": 4500,
+                                "code": "XC10",
+                                "desc": "10KG"
+                            },
+                            {
+                                "amount": 6750,
+                                "code": "XC15",
+                                "desc": "15KG"
+                            },
+                            {
+                                "amount": 13500,
+                                "code": "XC30",
+                                "desc": "30KG"
+                            }
+                        ],
+                        "MEAL": [
+                            {
+                                "amount": 250,
+                                "code": "SWVG",
+                                "desc": "Veg Sandwich"
+                            },
+                            {
+                                "amount": 250,
+                                "code": "OLSC",
+                                "desc": "Samosa and Chai"
+                            },
+                            {
+                                "amount": 320,
+                                "code": "OLVS",
+                                "desc": "Veg Sandwich and Coke"
+                            },
+                            {
+                                "amount": 320,
+                                "code": "OLNS",
+                                "desc": "Non Veg Sandwich and Coke"
+                            },
+                            {
+                                "amount": 400,
+                                "code": "PMVG",
+                                "desc": "Premium Tortilla Wrap Veg + Coke"
+                            },
+                            {
+                                "amount": 400,
+                                "code": "PMNV",
+                                "desc": "Premium Meal Tortilla Wrap Non-Veg + Coke"
+                            },
+                            {
+                                "amount": 499,
+                                "code": "FEST",
+                                "desc": "Festive meal"
+                            }
+                        ]
+                    },
+                    "stops": 0
+                }
+            ],
+            "totalPriceList": [
+                {
+                    "fareIdentifier": "PUBLISHED",
+                    "fd": {
+                        "ADULT": {
+                            "afC": {
+                                "TAF": {
+                                    "AGST": 404,
+                                    "MF": 15,
+                                    "MFT": 2.7,
+                                    "OT": 509,
+                                    "YQ": 0
+                                }
+                            },
+                            "bI": {
+                                "cB": "7 Kg",
+                                "iB": "15 Kg"
+                            },
+                            "cB": "GS",
+                            "cc": "ECONOMY",
+                            "fB": "AO9RBINX",
+                            "fC": {
+                                "BF": 8000,
+                                "NF": 8930.7,
+                                "TAF": 930.7,
+                                "TF": 8930.7
+                            },
+                            "mI": false,
+                            "rT": 1,
+                            "sR": 43
+                        }
+                    },
+                    "id": "1-4276296716_0BOMDELG8329_95761026143086",
+                    "pc": {
+                        "code": "G8",
+                        "isLcc": true,
+                        "name": "Go First"
+                    }
+                }
+            ]
+        }
+    ]
+}
