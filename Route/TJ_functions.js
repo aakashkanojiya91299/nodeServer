@@ -202,7 +202,6 @@ async function Booking_Instant_Ticket(Passenger_info) {
         "deliveryInfo": Passenger_info.DeliveryInfo,
         "gstInfo": Passenger_info.GSTInfo
     })
-    var Passenger = {};
     var errordata = 0;
     console.log("----->", Passenger_info);
     const api_url = 'https://apitest.tripjack.com/oms/v1/air/book';
@@ -242,9 +241,6 @@ async function Booking_Instant_Ticket(Passenger_info) {
         console.log("----->", res.data);
         if (res.data.status.success == true) {
             logger.info("booking Response body", res.data);
-            Passenger["Email"] = res.data.order.deliveryInfo.emails[0];
-            Passenger["Mobile_no"] = res.data.order.deliveryInfo.contacts[0];
-            await DBA.add_user(Passenger);
             return (res.data);
         }
         // alert('End of try (never reached)');
@@ -255,9 +251,160 @@ async function Booking_Instant_Ticket(Passenger_info) {
     }
 
 }
-async function Booking_Hold() { }
-async function Confirm_Fare_Before_Ticket() { }
-async function Book_Service_Confirm_Hold_Book() { }
+async function Booking_Hold(Passenger_info) { 
+    logger.info("booking hold Request body", {
+        "bookingId": Passenger_info.ID,
+        "travellerInfo": Passenger_info.TravellerInfo,
+        "deliveryInfo": Passenger_info.DeliveryInfo,
+        "gstInfo": Passenger_info.GSTInfo
+    })
+    var errordata = 0;
+    console.log("----->", Passenger_info);
+    const api_url = 'https://apitest.tripjack.com/oms/v1/air/book';
+    const headers = {
+        'apikey': process.env.APK_Key,
+        'Content-Type': 'application/json'
+    }
+
+    //alert('Start of try runs');
+    const res = await axios.post(api_url, {
+        "bookingId": Passenger_info.ID,
+        "travellerInfo": Passenger_info.TravellerInfo,
+        "deliveryInfo": Passenger_info.DeliveryInfo,
+        "gstInfo": Passenger_info.GSTInfo
+    }, { headers }).catch(function (error) {
+        if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            console.log("data-->", error.response.data);
+            errordata = error.response.data;
+            console.log("status", error.response.status);
+            console.log("header--->", error.response.headers);
+            logger.info("hold booking Response body", error.response.data);
+
+        }
+        if (error.request) {
+            // The request was made but no response was received
+            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+            // http.ClientRequest in node.js
+            //console.log("Data request->",error.request.data);
+
+
+        }
+    });
+    try {
+        console.log("----->", res.data);
+        if (res.data.status.success == true) {
+            logger.info("hold booking Response body", res.data);
+            return (res.data);
+        }
+        // alert('End of try (never reached)');
+    }
+    catch (e) {
+        console.log(e);
+        return ("Error while hold booking", errordata);
+    }
+}
+async function Confirm_Fare_Before_Ticket(ID) {
+    logger.info("Fare Conformtion Before Ticketting Request body", {
+        "bookingId": ID.id
+    })
+    var errordata = 0;
+    console.log("----->", ID);
+    const api_url = 'https://apitest.tripjack.com/oms/v1/air/fare-validate';
+    const headers = {
+        'apikey': process.env.APK_Key,
+        'Content-Type': 'application/json'
+    }
+
+    //alert('Start of try runs');
+    const res = await axios.post(api_url, {
+        "bookingId": ID.id
+
+    }, { headers }).catch(function (error) {
+        if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            console.log("data-->", error.response.data);
+            errordata = error.response.data;
+            console.log("status", error.response.status);
+            console.log("header--->", error.response.headers);
+            logger.info("Fare Conformtion Response body", error.response.data);
+
+        }
+        if (error.request) {
+            // The request was made but no response was received
+            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+            // http.ClientRequest in node.js
+            //console.log("Data request->",error.request.data);
+
+
+        }
+    });
+    try {
+        console.log("----->", res.data);
+        if (res.data.status.success == true) {
+            logger.info("Fare Conformtion body", res.data);
+            return (res.data);
+        }
+        // alert('End of try (never reached)');
+    }
+    catch (e) {
+        console.log(e);
+        return ("Error while Getting Fare Conformtion", errordata);
+    }
+ }
+async function Book_Service_Confirm_Hold_Book(Passenger_info) { 
+    logger.info("booking Request body", {
+        "bookingId": Passenger_info.ID,
+        "paymentInfos": Passenger_info.paymentInfo
+    })
+    var errordata = 0;
+    console.log("----->", Passenger_info);
+    const api_url = 'https://apitest.tripjack.com/oms/v1/air/confirm-book';
+    const headers = {
+        'apikey': process.env.APK_Key,
+        'Content-Type': 'application/json'
+    }
+
+    //alert('Start of try runs');
+    const res = await axios.post(api_url, {
+        "bookingId": Passenger_info.ID,
+        "paymentInfos": Passenger_info.paymentInfo
+    }, { headers }).catch(function (error) {
+        if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            console.log("data-->", error.response.data);
+            errordata = error.response.data;
+            console.log("status", error.response.status);
+            console.log("header--->", error.response.headers);
+            logger.info("hold booking Response body", error.response.data);
+
+        }
+        if (error.request) {
+            // The request was made but no response was received
+            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+            // http.ClientRequest in node.js
+            //console.log("Data request->",error.request.data);
+
+
+        }
+    });
+    try {
+        console.log("----->", res.data);
+        if (res.data.status.success == true) {
+            logger.info("hold booking Response body", res.data);
+            return (res.data);
+        }
+        // alert('End of try (never reached)');
+    }
+    catch (e) {
+        console.log(e);
+        return ("Error while hold booking", errordata);
+    }
+
+}
 async function Booking_Details(ID) {
     logger.info("booking Request body", {
         "bookingId": ID.id

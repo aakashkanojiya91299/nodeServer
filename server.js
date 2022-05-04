@@ -95,13 +95,13 @@ async function listen() {
 
 
 // This is what happens when any user requests '/'
-const job = schedule.scheduleJob({ hour: 00, minute: 01 }, (async function () {
+schedule.scheduleJob({ hour: 00, minute: 05 }, (async function () {
   try {
     console.log("New ID----> ");
     await (TBO.login());
   }
   catch (err) {
-    console.log(err);
+    console.log("----Schedule error ",err);
   }
 }));
 async function getTicket(req, res) {
@@ -273,9 +273,21 @@ async function Booking_Instant_Ticket(req,res){
   res.send(result_data);
 
 }
-async function Booking_Hold(req,res){}
-async function Confirm_Fare_Before_Ticket(req,res){}
-async function Book_Service_Confirm_Hold_Book(req,res){}
+async function Booking_Hold(req,res){
+  console.log(req.body);
+  result_data = await TJ.BHD(req.body);
+  res.send(result_data);
+}
+async function Confirm_Fare_Before_Ticket(req,res){
+  console.log(req.body);
+  result_data = await TJ.CFBT(req.body);
+  res.send(result_data);
+}
+async function Book_Service_Confirm_Hold_Book(req,res){
+  console.log(req.body);
+  result_data = await TJ.BSCHB(req.body);
+  res.send(result_data);
+}
 async function Booking_Details(req,res){
   console.log(req.body);
   result_data = await TJ.BD(req.body);

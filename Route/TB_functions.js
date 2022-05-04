@@ -16,11 +16,11 @@ async function Authenticate() {
       process.env['TokenId'] = res.data.TokenId;
       process.env['TokenAgencyId'] = res.data.Member.AgencyId;
       process.env['TokenMemberId'] = res.data.Member.MemberId;
-      console.log(process.env.TokenId);
+      console.log("--new id->",process.env.TokenId);
       return (process.env.TokenId);
     }
     catch (error) {
-      console.error("Authenticate issue in side authenticate", error);
+      console.error("Authenticate issue in side authenticate while log in", error);
       try {
         if (process.env.TokenId != 0 && process.env.TokenAgencyId != 0 && process.env.TokenMemberId != 0) {
           logout();
