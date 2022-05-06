@@ -241,6 +241,9 @@ async function Booking_Instant_Ticket(Passenger_info) {
         console.log("----->", res.data);
         if (res.data.status.success == true) {
             logger.info("booking Response body", res.data);
+            Passenger["Email"] = res.data.order.deliveryInfo.emails[0];
+            Passenger["Mobile_no"] = res.data.order.deliveryInfo.contacts[0];
+            await DBA.add_user(Passenger);
             return (res.data);
         }
         // alert('End of try (never reached)');
