@@ -54,6 +54,7 @@ async function listen() {
 }
 
 // Set the route for the root directory
+
 //TBO
     app.post('/api/TBO/search', search);
     app.get('/api/TBO/get_FareRule', get_FareRule);
@@ -293,11 +294,32 @@ async function Booking_Details(req,res){
   result_data = await TJ.BD(req.body);
   res.send(result_data);
 }
-async function Seat_Service(req,res){}
-async function Get_Amendment_Charges(req,res){}
-async function Submit_Amendment(req,res){}
-async function Amendment_Details(req,res){}
-async function Release_PNR_Hold(req,res){}     
+async function Seat_Service(req,res){
+  console.log("-client site->",req.body);
+  result_data = await TJ.SAS(req.body);
+  res.send(result_data);
+}
+
+async function Get_Amendment_Charges(req,res){
+  console.log(req.body);
+  result_data = await TJ.GAC(req.body);
+  res.send(result_data);
+}
+async function Submit_Amendment(req,res){
+  console.log(req.body);
+  result_data = await TJ.SA(req.body);
+  res.send(result_data);
+}
+async function Amendment_Details(req,res){
+  console.log(req.body);
+  result_data = await TJ.AD(req.body);
+  res.send(result_data);
+}
+async function Release_PNR_Hold(req,res){
+  console.log(req.body);
+  result_data = await TJ.RPH(req.body);
+  res.send(result_data);
+}     
 
 //Ctrl+C handel
 process.on('SIGINT', async function () {
