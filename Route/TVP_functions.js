@@ -11,6 +11,7 @@ const util = require('util');
 // 	async: true
 // });
 var convert = require('xml-js');
+
 const winston = require('winston');
 
 const logger = winston.createLogger({
@@ -79,7 +80,7 @@ async function search(search_data) {
         method: 'post',
         url: 'https://apac.universal-api.pp.travelport.com/B2BGateway/connect/uAPI/AirService',
         headers: {
-            //'Authorization': 'Basic VW5pdmVyc2FsIEFQSS91QVBJNTM5MzQ2NjU2NS0zNzgxMDM4OTprUyY0QzVjX2JH',
+            // 'Authorization': 'Basic VW5pdmVyc2FsIEFQSS91QVBJNTM5MzQ2NjU2NS0zNzgxMDM4OTprUyY0QzVjX2JH',
             'Authorization':'Basic ' + Buffer.from(process.env.Username + ':' + process.env.Password_TVP).toString('base64'),
             'Content-Type': 'application/xml'
         },
@@ -90,16 +91,20 @@ async function search(search_data) {
         .then(function (response) {
             console.log(response.data);
             res = response.data;
-            
+           return(res)
         })
         .catch(function (error) {
             console.log(error);
         })
     
-        var result2 = convert.xml2json(res, {compact: true, spaces: 4});
+        var result2 = convert.xml2js(res, {compact: true, spaces: 4,attributesKey: 'attributes',elementNameFn: function(val) {return val.replace('SOAP:','');},elementNameFn: function(val) {return val.replace('air:','');},alwaysChildren:true});
             //console.log(result2);
-            return(result2)
+            console.log(result2);
+         var options = { compact: false, ignoreComment: true, spaces: 4 };
+         var result = convert.js2xml(result2, options);
+            return(result2);
     
+
     
 }
 

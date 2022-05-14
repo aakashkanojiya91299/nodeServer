@@ -326,7 +326,12 @@ async function search_TVP(req,res){
   console.log("search data-->",req.body);
   search_data = req.body;
   result_data = await TVP.search();
-  //console.log("respond-->",result_data);
+  var string = `"AIR:LOWFARESEARCHRSP"`;
+  var data = Object.values(result_data)
+  console.log("respond-->",Object.keys(data),data);
+  for (const [key, value] of Object.entries(Object.values(result_data))) {
+    console.log(`${key}: ${value}`);
+  }
   res.send(result_data);
 }
 
