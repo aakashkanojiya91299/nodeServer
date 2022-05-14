@@ -22,14 +22,14 @@ async function hash_function(myPlaintextPassword,saltRounds){
 }
 
 //Database Working 
-async function mogo_pnr_info(pnr, booking_id, Ticket_info) {
+async function mogo_pnr_info(pnr, booking_id, Ticket_info,Type) {
     var url = "mongodb://localhost:27017/";
     const client = new MongoClient(url);
     try {
       // Connect to the MongoDB cluster
       await client.connect();
       const Collection = client.db("flight_pnr_info").collection("info_pnr_booking");
-      var customer = { PNR: pnr, Booking_ID: booking_id, Ticket_info };
+      var customer = { PNR: pnr, Booking_ID: booking_id, Ticket_info,Type };
   
       var results = await Collection.insertOne(customer);
     }
@@ -206,6 +206,22 @@ async function mogo_pnr_info(pnr, booking_id, Ticket_info) {
     }
   }
 
+  async function mogo_Booking_id_and_type_for_TJ(booking_id,Type) {
+    var url = "mongodb://localhost:27017/";
+    const client = new MongoClient(url);
+    try {
+      // Connect to the MongoDB cluster
+      await client.connect();
+      const Collection = client.db("flight_pnr_info").collection("info_pnr_booking");
+      var customer = { Booking_ID: booking_id,Type };
+  
+      var results = await Collection.insertOne(customer);
+    }
+    catch (e) {
+      console.error(e);
+    }
+  }
+
   module.exports.pnr_info = mogo_pnr_info;
   module.exports.Ticket_Id_info = mogo_Ticket_Id_info;
   module.exports.cancellation_request = mogo_cancellation_request;
@@ -214,3 +230,4 @@ async function mogo_pnr_info(pnr, booking_id, Ticket_info) {
   module.exports.get_data = mongo_get_data;
   module.exports.update_status = mongo_update_status;
   module.exports.Release_PNR = mogo_cancellation_Release_PNR_request;
+  module.exports.BandT = mogo_Booking_id_and_type_for_TJ;

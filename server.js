@@ -87,7 +87,7 @@ async function listen() {
     app.get('/api/TJ/Release_PNR_Hold',Release_PNR_Hold);
 
 //TRAVELPORT
-    app.post('/api/TVP/search');
+    app.post('/api/TVP/search',search_TVP);
     app.get('/api/TVP/');
     app.get('/api/TVP/');
     app.get('/api/TVP/');
@@ -319,7 +319,16 @@ async function Release_PNR_Hold(req,res){
   console.log(req.body);
   result_data = await TJ.RPH(req.body);
   res.send(result_data);
-}     
+} 
+
+// working on Travel Port API 
+async function search_TVP(req,res){
+  console.log("search data-->",req.body);
+  search_data = req.body;
+  result_data = await TVP.search();
+  //console.log("respond-->",result_data);
+  res.send(result_data);
+}
 
 //Ctrl+C handel
 process.on('SIGINT', async function () {

@@ -9,10 +9,9 @@ async function Authenticate() {
       const res = await axios.post(api_url, {
         "ClientId": process.env.ClientId,
         "UserName": process.env.UserNameId,
-        "Password": process.env.Password,
+        "Password": process.env.Password_TBO,
         "EndUserIp": "192.168.1.111"
       })
-  
       process.env['TokenId'] = res.data.TokenId;
       process.env['TokenAgencyId'] = res.data.Member.AgencyId;
       process.env['TokenMemberId'] = res.data.Member.MemberId;
@@ -244,7 +243,8 @@ async function Authenticate() {
           console.log("inside", (res.data.Response.Response.FlightItinerary.Passenger).length);
           Ticket_info.Passenger_info = res.data.Response.Response.FlightItinerary;
           console.log(Ticket_info);
-          DBA.pnr_info(res.data.Response.Response.PNR, res.data.Response.Response.BookingId, Ticket_info);
+          const Type = "TBO";
+          await DBA.pnr_info(res.data.Response.Response.PNR, res.data.Response.Response.BookingId, Ticket_info, Type);
           var Passenger = {};
           Passenger["Email"] = res.data.Response.Response.FlightItinerary.Passenger[0].Email;
           Passenger["Mobile_no"] = res.data.Response.Response.FlightItinerary.Passenger[0].ContactNo;

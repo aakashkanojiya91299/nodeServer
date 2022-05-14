@@ -249,9 +249,12 @@ async function Booking_Instant_Ticket(Passenger_info) {
         console.log("----->", res.data);
         if (res.data.status.success == true) {
             logger.info("booking Response body", res.data);
-            Passenger["Email"] = res.data.order.deliveryInfo.emails[0];
-            Passenger["Mobile_no"] = res.data.order.deliveryInfo.contacts[0];
+            const Type = "TBO";
+            await DBA.BandT(res.data.bookingId, Type);
+            Passenger["Email"] = Passenger_info.DeliveryInfo.emails[0];
+            Passenger["Mobile_no"] = Passenger_info.DeliveryInfo.contacts[0];
             await DBA.add_user(Passenger);
+
             return (res.data);
         }
         else{
@@ -311,6 +314,11 @@ async function Booking_Hold(Passenger_info) {
         console.log("----->", res.data);
         if (res.data.status.success == true) {
             logger.info("hold booking Response body", res.data);
+            const Type = "TBO";
+            await DBA.BandT(res.data.bookingId, Type);
+            Passenger["Email"] = Passenger_info.DeliveryInfo.emails[0];
+            Passenger["Mobile_no"] = Passenger_info.DeliveryInfo.contacts[0];
+            await DBA.add_user(Passenger);
             return (res.data);
         }
         else{
@@ -433,7 +441,7 @@ async function Book_Service_Confirm_Hold_Book(Passenger_info) {
 
 }
 async function Booking_Details(ID) {
-    logger.info("booking Request body", {
+    logger.info("booking Details Request body", {
         "bookingId": ID.id
     })
     var errordata = 0;
@@ -779,3 +787,4 @@ module.exports.GAC = Get_Amendment_Charges;
 module.exports.SA = Submit_Amendment;
 module.exports.AD = Amendment_Details;
 module.exports.RPH = Release_PNR_Hold;
+
