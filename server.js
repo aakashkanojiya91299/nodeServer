@@ -36,7 +36,7 @@ const logger = winston.createLogger({
   ]
 });
 //Custom middleware 
-// app.use(express.json()) // for parsing application/json
+app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true }))
 
 // config env 
@@ -326,10 +326,10 @@ async function Release_PNR_Hold(req,res){
 // working on Travel Port API 
 async function search_TVP(req,res){
   
-  //console.log("--data--",res);
+  console.log("--data--",req.body);
   search_data = req.body;
   result_data = await TVP.search(search_data);
-  res.send("xml data sorry");
+  res.send(result_data);
 
 }
 

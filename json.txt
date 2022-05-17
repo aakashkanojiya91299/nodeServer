@@ -21,50 +21,27 @@
                         "OriginApplication": "uAPI"
                     }
                 },
-                "air:SearchAirLeg": [
-                    {
-                        "air:SearchOrigin": {
-                            "common:CityOrAirport": {
-                                "attributes": {
-                                    "Code": "DEL"
-                                }
-                            }
-                        },
-                        "air:SearchDestination": {
-                            "common:CityOrAirport": {
-                                "attributes": {
-                                    "Code": "BOM"
-                                }
-                            }
-                        },
-                        "air:SearchDepTime": {
+                "air:SearchAirLeg": {
+                    "air:SearchOrigin": {
+                        "common:CityOrAirport": {
                             "attributes": {
-                                "PreferredTime": "2022-12-10"
+                                "Code": "DEL"
                             }
                         }
                     },
-                    {
-                        "air:SearchOrigin": {
-                            "common:CityOrAirport": {
-                                "attributes": {
-                                    "Code": "BOM"
-                                }
-                            }
-                        },
-                        "air:SearchDestination": {
-                            "common:CityOrAirport": {
-                                "attributes": {
-                                    "Code": "DEL"
-                                }
-                            }
-                        },
-                        "air:SearchDepTime": {
+                    "air:SearchDestination": {
+                        "common:CityOrAirport": {
                             "attributes": {
-                                "PreferredTime": "2022-12-18"
+                                "Code": "BOM"
                             }
                         }
+                    },
+                    "air:SearchDepTime": {
+                        "attributes": {
+                            "PreferredTime": "2022-12-10"
+                        }
                     }
-                ],
+                },
                 "air:AirSearchModifiers": {
                     "air:PreferredProviders": {
                         "common:Provider": {
