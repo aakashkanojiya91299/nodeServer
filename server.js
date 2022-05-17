@@ -3,11 +3,12 @@
 // Using express: http://expressjs.com/
 var express = require('express');
 var cors = require('cors');
-//const { request } = require('express');
-//var requestIp = require('request-ip');
+var xml = require('xml');
+const bodyParser = require('body-parser');
+const xmlparser = require('express-xml-bodyparser')
 const schedule = require('node-schedule');
 const { get } = require('express/lib/request');
-// const fs = require('fs');
+
 
 const winston = require('winston');
 var tty = require("tty");
@@ -21,6 +22,7 @@ var app = express();
 app.use(cors({
   origin: '*'
 }));
+
 const logger = winston.createLogger({
   level: 'info',
   format: winston.format.simple(),
@@ -33,8 +35,8 @@ const logger = winston.createLogger({
     new winston.transports.File({ filename: 'all_reqandres.log' }),
   ]
 });
-
-app.use(express.json()) // for parsing application/json
+//Custom middleware 
+// app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true }))
 
 // config env 
@@ -323,17 +325,14 @@ async function Release_PNR_Hold(req,res){
 
 // working on Travel Port API 
 async function search_TVP(req,res){
-  console.log("search data-->",req.body);
+  
+  //console.log("--data--",res);
   search_data = req.body;
-  result_data = await TVP.search();
-  var string = `"AIR:LOWFARESEARCHRSP"`;
-  var data = Object.values(result_data)
-  console.log("respond-->",Object.keys(data),data);
-  for (const [key, value] of Object.entries(Object.values(result_data))) {
-    console.log(`${key}: ${value}`);
-  }
-  res.send(result_data);
+  result_data = await TVP.search(search_data);
+  res.send("xml data sorry");
+
 }
+
 
 //Ctrl+C handel
 process.on('SIGINT', async function () {

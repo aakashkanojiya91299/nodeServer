@@ -15,11 +15,14 @@
     "axios": "^0.26.1",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.20.0",
+    "body-parser-xml": "^2.0.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "easy-soap-request": "^4.7.0",
-    "express": "^4.17.3",
+    "express": "^4.18.1",
+    "express-xml-bodyparser": "^0.3.0",
     "fast-xml-parser": "^4.0.7",
+    "fs": "^0.0.1-security",
     "generate-password": "^1.7.0",
     "mongodb": "^4.5.0",
     "node-schedule": "^2.1.0",
@@ -27,9 +30,11 @@
     "request-ip": "^2.1.3",
     "tty": "^1.0.1",
     "winston": "^3.7.2",
+    "xml": "^1.0.1",
     "xml-js": "^1.6.11",
     "xml2js": "^0.4.23",
-    "xml2json": "^0.12.0"
+    "xml2json": "^0.12.0",
+    "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
     "lite-server": "^2.6.1"

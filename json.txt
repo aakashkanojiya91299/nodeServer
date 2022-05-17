@@ -1,0 +1,115 @@
+{
+    "soapenv:Envelope": {
+        "attributes": {
+            "xmlns:soapenv": "http://schemas.xmlsoap.org/soap/envelope/"
+        },
+        "soapenv:Header": {},
+        "soapenv:Body": {
+            "air:LowFareSearchReq": {
+                "attributes": {
+                    "AuthorizedBy": "uAPI5393466565-37810389",
+                    "SolutionResult": "false",
+                    "TargetBranch": "P7182092",
+                    "xmlns:air": "http://www.travelport.com/schema/air_v50_0",
+                    "TraceId": "FBUAPI39053",
+                    "xmlns:common": "http://www.travelport.com/schema/common_v50_0",
+                    "xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+                    "xsi:schemaLocation": "http://www.travelport.com/schema/air_v50_0 file:///C:/Users/mukil.kumar/Documents/Ecommerce/WSDL/Release-V17.3.0.35-V17.3/air_v50_0/AirReqRsp.xsd"
+                },
+                "common:BillingPointOfSaleInfo": {
+                    "attributes": {
+                        "OriginApplication": "uAPI"
+                    }
+                },
+                "air:SearchAirLeg": [
+                    {
+                        "air:SearchOrigin": {
+                            "common:CityOrAirport": {
+                                "attributes": {
+                                    "Code": "DEL"
+                                }
+                            }
+                        },
+                        "air:SearchDestination": {
+                            "common:CityOrAirport": {
+                                "attributes": {
+                                    "Code": "BOM"
+                                }
+                            }
+                        },
+                        "air:SearchDepTime": {
+                            "attributes": {
+                                "PreferredTime": "2022-12-10"
+                            }
+                        }
+                    },
+                    {
+                        "air:SearchOrigin": {
+                            "common:CityOrAirport": {
+                                "attributes": {
+                                    "Code": "BOM"
+                                }
+                            }
+                        },
+                        "air:SearchDestination": {
+                            "common:CityOrAirport": {
+                                "attributes": {
+                                    "Code": "DEL"
+                                }
+                            }
+                        },
+                        "air:SearchDepTime": {
+                            "attributes": {
+                                "PreferredTime": "2022-12-18"
+                            }
+                        }
+                    }
+                ],
+                "air:AirSearchModifiers": {
+                    "air:PreferredProviders": {
+                        "common:Provider": {
+                            "attributes": {
+                                "Code": "1G"
+                            }
+                        }
+                    }
+                },
+                "common:SearchPassenger": [
+                    {
+                        "attributes": {
+                            "Code": "ADT",
+                            "BookingTravelerRef": "ilay2SzXTkSUYRO+0owUNw=="
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "Code": "INF",
+                            "Age": "01",
+                            "PricePTCOnly": "true",
+                            "BookingTravelerRef": "8hLudMvaTjOj4QViG7Dz2A=="
+                        }
+                    },
+                    {
+                        "attributes": {
+                            "Code": "CNN",
+                            "Age": "10",
+                            "BookingTravelerRef": "IAmvmlf5SO+ZVfy5o8VPuA=="
+                        }
+                    }
+                ],
+                "air:AirPricingModifiers": {
+                    "attributes": {
+                        "ETicketability": "Yes",
+                        "FaresIndicator": "AllFares",
+                        "CurrencyType": "INR"
+                    }
+                },
+                "air:FareRulesFilterCategory": {
+                    "air:CategoryCode": {
+                        "_text": "CHG"
+                    }
+                }
+            }
+        }
+    }
+}
