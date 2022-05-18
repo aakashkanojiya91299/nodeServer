@@ -32,15 +32,20 @@ const logger = winston.createLogger({
 async function search(search_data) {
     console.log("tvp--data",search_data);
     var res = 0;
-if(search_data.JourneyType == 1){
+if(search_data.JourneyType == "1"){
     try{
     var Return_Journey = `<air:SearchAirLeg>\r\n\t\t\t\t<air:SearchOrigin>\r\n\t\t\t\t\t
     <common:CityOrAirport Code="`+ search_data.ReturnSegment.Origin+`"/>\r\n\t\t\t\t
     </air:SearchOrigin>\r\n\t\t\t\t
     <air:SearchDestination>\r\n\t\t\t\t\t<common:CityOrAirport Code="`+search_data.ReturnSegment.Destination+`"/>
     \r\n\t\t\t\t</air:SearchDestination>\r\n\t\t\t\t
-    <air:SearchDepTime PreferredTime="`+ search_data.ReturnSegment.DepartureDate+`"/>\r\n\t\t\t
+    <air:SearchDepTime PreferredTime="`+ search_data.ReturnSegment.DepartureDate+`"/>\r\n\t\t\t<air:AirLegModifiers>\r\n\t\t\t\t
+    <air:PreferredCabins>\r\n\t\t\t\t
+      <common:CabinClass xmlns="http://www.travelport.com/schema/common_v42_0" Type="`+search_data.ReturnSegment.CabinClass+`" />\r\n\t\t\t\t
+    </air:PreferredCabins>\r\n\t\t\t\t
+  </air:AirLegModifiers>
     </air:SearchAirLeg>\r\n\t\t\t`
+    console.log("return set 1");
     }
     catch(e){
         return("error check return segment ");
@@ -80,6 +85,8 @@ if(search_data.JourneyType == 1){
     }
     console.log("--inside TVP---", search_data);
 
+    if(search_data.JourneyType == "1"){
+        console.log("return2");
     var data = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">\r\n\t<soapenv:Header/>
     \r\n\t<soapenv:Body>\r\n\t\t<air:LowFareSearchReq AuthorizedBy="uAPI5393466565-37810389" SolutionResult="false" TargetBranch="P7182092" xmlns:air="http://www.travelport.com/schema/air_v50_0" TraceId="FBUAPI39053" xmlns:common="http://www.travelport.com/schema/common_v50_0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.travelport.com/schema/air_v50_0 file:///C:/Users/mukil.kumar/Documents/Ecommerce/WSDL/Release-V17.3.0.35-V17.3/air_v50_0/AirReqRsp.xsd">
     \r\n\t\t\t<common:BillingPointOfSaleInfo OriginApplication="uAPI"/>\r\n\t\t\t
@@ -88,22 +95,52 @@ if(search_data.JourneyType == 1){
     </air:SearchOrigin>\r\n\t\t\t\t<air:SearchDestination>\r\n\t\t\t\t\t
     <common:CityOrAirport Code="`+ search_data.Segments.Destination+ `"/>\r\n\t\t\t\t
     </air:SearchDestination>\r\n\t\t\t\t
-    <air:SearchDepTime PreferredTime="`+ search_data.Segments.DepartureDate +`"/>\r\n\t\t\t
+    <air:SearchDepTime PreferredTime="`+ search_data.Segments.DepartureDate +`"/>\r\n\t\t\t<air:AirLegModifiers>\r\n\t\t\t\t
+    <air:PreferredCabins>\r\n\t\t\t\t
+      <common:CabinClass xmlns="http://www.travelport.com/schema/common_v42_0" Type="`+ search_data.Segments.CabinClass+`" />\r\n\t\t\t\t
+    </air:PreferredCabins>\r\n\t\t\t\t
+  </air:AirLegModifiers>
+    </air:SearchAirLeg>\r\n\t\t\t`+Return_Journey+`<air:AirSearchModifiers>\r\n\t\t\t\t`+source+`
+    </air:AirSearchModifiers>\r\n\t\t\t`+Adult+`
+    \r\n\t\t\t
+    `+child+infant+`\r\n\t\t\t<air:AirPricingModifiers ETicketability="Yes" FaresIndicator="AllFares" CurrencyType="INR"/>\r\n\t\t\t<air:FareRulesFilterCategory>\r\n\t\t\t\t
+    <air:CategoryCode>CHG</air:CategoryCode>\r\n\t\t\t</air:FareRulesFilterCategory>\r\n\t\t</air:LowFareSearchReq>\r\n\t</soapenv:Body>\r\n</soapenv:Envelope> 
+`
+}
+else{
+    console.log("else part of return 2");
+    var data = `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/">\r\n\t<soapenv:Header/>
+    \r\n\t<soapenv:Body>\r\n\t\t<air:LowFareSearchReq AuthorizedBy="uAPI5393466565-37810389" SolutionResult="false" TargetBranch="P7182092" xmlns:air="http://www.travelport.com/schema/air_v50_0" TraceId="FBUAPI39053" xmlns:common="http://www.travelport.com/schema/common_v50_0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.travelport.com/schema/air_v50_0 file:///C:/Users/mukil.kumar/Documents/Ecommerce/WSDL/Release-V17.3.0.35-V17.3/air_v50_0/AirReqRsp.xsd">
+    \r\n\t\t\t<common:BillingPointOfSaleInfo OriginApplication="uAPI"/>\r\n\t\t\t
+    <air:SearchAirLeg>\r\n\t\t\t\t
+    <air:SearchOrigin>\r\n\t\t\t\t\t<common:CityOrAirport Code="`+ search_data.Segments.Origin+ `"/>\r\n\t\t\t\t
+    </air:SearchOrigin>\r\n\t\t\t\t<air:SearchDestination>\r\n\t\t\t\t\t
+    <common:CityOrAirport Code="`+ search_data.Segments.Destination+ `"/>\r\n\t\t\t\t
+    </air:SearchDestination>\r\n\t\t\t\t
+    <air:SearchDepTime PreferredTime="`+ search_data.Segments.DepartureDate +`"/>\r\n\t\t\t<air:AirLegModifiers>\r\n\t\t\t\t
+    <air:PreferredCabins>\r\n\t\t\t\t
+      <common:CabinClass xmlns="http://www.travelport.com/schema/common_v42_0" Type="`+ search_data.Segments.CabinClass+`" />\r\n\t\t\t\t
+    </air:PreferredCabins>\r\n\t\t\t\t
+  </air:AirLegModifiers>
     </air:SearchAirLeg>\r\n\t\t\t<air:AirSearchModifiers>\r\n\t\t\t\t`+source+`
     </air:AirSearchModifiers>\r\n\t\t\t`+Adult+`
     \r\n\t\t\t
     `+child+infant+`\r\n\t\t\t<air:AirPricingModifiers ETicketability="Yes" FaresIndicator="AllFares" CurrencyType="INR"/>\r\n\t\t\t<air:FareRulesFilterCategory>\r\n\t\t\t\t
     <air:CategoryCode>CHG</air:CategoryCode>\r\n\t\t\t</air:FareRulesFilterCategory>\r\n\t\t</air:LowFareSearchReq>\r\n\t</soapenv:Body>\r\n</soapenv:Envelope> 
 `
-fs.writeFile("xml.txt", data, (err) => {
-    if (err)
-      console.log(err);
-    else {
-      console.log("File written successfully\n");
-      console.log("The written has the following contents:");
-      console.log(fs.readFileSync("xml.txt", "utf8"));
-    }
-  });
+}
+
+// fs.writeFile("xml.log", data, (err) => {
+//     if (err)
+//       console.log(err);
+//     else {
+//       console.log("File written successfully\n");
+//       console.log("The written has the following contents:");
+//       console.log(fs.readFileSync("xml.log", "utf8"));
+//     }
+//   });
+  logger.info("Search request body tvp", {data}); 
+
     var config = {
         method: 'post',
         url: 'https://apac.universal-api.pp.travelport.com/B2BGateway/connect/uAPI/AirService',
@@ -118,6 +155,7 @@ fs.writeFile("xml.txt", data, (err) => {
     await axios(config)
         .then(function (response) {
             //console.log(response.data);
+            logger.info("search response",{response});
             res = response.data;
         })
         .catch(function (error) {
@@ -140,4 +178,9 @@ fs.writeFile("xml.txt", data, (err) => {
 
 }
 
+async function Airprice(Price_data){
+    
+}
+
+module.exports.Price = Airprice;
 module.exports.search = search;

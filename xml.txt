@@ -28,12 +28,10 @@
 			
     </air:AirSearchModifiers>
 			<common:SearchPassenger Code="ADT" BookingTravelerRef="ilay2SzXTkSUYRO+0owUNw==0"/>
-			<common:SearchPassenger Code="ADT" BookingTravelerRef="ilay2SzXTkSUYRO+0owUNw==1"/>
 			
     
 			
     <common:SearchPassenger Code="INF" Age="1" PricePTCOnly="true" BookingTravelerRef="8hLudMvaTjOj4QViG7Dz2A==0"/>
-			<common:SearchPassenger Code="INF" Age="1" PricePTCOnly="true" BookingTravelerRef="8hLudMvaTjOj4QViG7Dz2A==1"/>
 			
 			<air:AirPricingModifiers ETicketability="Yes" FaresIndicator="AllFares" CurrencyType="INR"/>
 			<air:FareRulesFilterCategory>

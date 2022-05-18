@@ -90,7 +90,7 @@ async function listen() {
 
 //TRAVELPORT
     app.post('/api/TVP/search',search_TVP);
-    app.get('/api/TVP/');
+    app.get('/api/TVP/getprice',get_price);
     app.get('/api/TVP/');
     app.get('/api/TVP/');
 
@@ -331,6 +331,10 @@ async function search_TVP(req,res){
   result_data = await TVP.search(search_data);
   res.send(result_data);
 
+}
+
+async function get_price(req,res){
+  
 }
 
 
